@@ -8,11 +8,13 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import './Navbar.css'
 
-const pages = ['Experiência', 'Projetos', 'Currículo', 'Contato'];
+const pages = ['Linkedin', 'Github', 'Currículo'];
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -29,12 +31,8 @@ function Navbar() {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
     return (
-        <AppBar position="static" sx={{backgroundColor: "#1c5560"}}>
+        <AppBar position="static" sx={{ backgroundColor: "#1c5560" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* Menu hamburger mobile */}
@@ -66,7 +64,7 @@ function Navbar() {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -74,7 +72,7 @@ function Navbar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {/* {pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
@@ -82,7 +80,12 @@ function Navbar() {
                             >
                                 {page}
                             </Button>
-                        ))}
+                        ))} */}
+                        <a href="https://www.linkedin.com/in/joaomontemor/" target='_blank' rel="noreferrer" className='containerLinks'><LinkedInIcon fontSize='large' /></a>
+
+                        <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'><GitHubIcon fontSize='large' /></a>
+
+                        <a href="" className='containerLinks'>Currículo</a>
                     </Box>
 
 
