@@ -1,0 +1,32 @@
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    gap: 60px;
+}
+
+.word-rotator-section {
+    width: 75%;
+}
+
+.project-slider-section {
+    width: 25%;
+}
+
+@media screen and (max-width: 900px) {
+    .main-section {
+        flex-direction: column;
+        padding: 10px;
+        gap: 20px 0;
+    }
+
+    .word-rotator-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .project-slider-section {
+        width: 100%;
+    }
+}

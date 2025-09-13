@@ -25,5 +25,11 @@ span {
 }
 
 .mainWord span {
-    font-size: 100px;
+    font-size: 8em;
+}
+
+@media screen and (max-width: 900px) {
+    .mainWord span {
+        font-size: 4.5em;
+    }
 }
