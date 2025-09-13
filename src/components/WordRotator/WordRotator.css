@@ -1,0 +1,29 @@
+.wordRotator {
+    /* A transição suave de 0.5 segundos aplicada à propriedade 'opacity' */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    /* Começa visível */
+    display: inline-block;
+    /* Garante que o span se comporte bem no layout */
+}
+
+.wordRotator.fading {
+    opacity: 0;
+    /* Fica invisível quando a classe 'fading' é aplicada */
+}
+
+span {
+    color: white;
+}
+
+.mainWord {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.mainWord span {
+    font-size: 100px;
+}
