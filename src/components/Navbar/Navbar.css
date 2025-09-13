@@ -4,3 +4,11 @@
     text-align: center;
     margin: auto 10px;
 }
+
+@media screen and (max-width: 900px) {
+    .containerLinks {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+    }
+}

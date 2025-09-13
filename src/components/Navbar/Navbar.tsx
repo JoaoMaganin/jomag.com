@@ -63,11 +63,28 @@ function Navbar() {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            {pages.map((page) => (
+                            {/* {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                                 </MenuItem>
-                            ))}
+                            ))} */}
+                            <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'>
+                                <MenuItem>
+                                    <Typography sx={{ textAlign: 'center' }}>Linkedin</Typography>
+                                </MenuItem>
+                            </a>
+
+                            <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'>
+                                <MenuItem>
+                                    <Typography sx={{ textAlign: 'center' }}>Github</Typography>
+                                </MenuItem>
+                            </a>
+
+                            <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'>
+                                <MenuItem>
+                                    <Typography sx={{ textAlign: 'center' }}>Currículo</Typography>
+                                </MenuItem>
+                            </a>
                         </Menu>
                     </Box>
 
