@@ -36,7 +36,7 @@ const WordRotator = ({ period = 3000 }) => {
 
     return (
         <div className='mainWord'>
-            <span>Sou um dev</span>
+            <span>Desenvolvedor</span>
             <span className={`wordRotator ${isFading ? 'fading' : ''}`}>
                 {SKILLS_LIST[currentIndex]}
             </span>
