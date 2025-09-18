@@ -16,6 +16,15 @@ const Home = () => {
                     <ProjectSlider />
                 </div>
             </section>
+
+            <section className="about-me">
+                <div>
+                    <p>Muito prazer! Me chamo João Vitor Maganin, sou um desenvolvedor fullstack brasileiro,
+                    formado em Ciência da Computação e possuo experiência profissional como analista de sistemas.
+                    Sou apaixonado por novas tecnologias e por resolver problemas, sou movido a desafios.
+                    </p>
+                </div>
+            </section>
         </div>
     )
 }
