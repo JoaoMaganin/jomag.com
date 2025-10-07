@@ -1,4 +1,3 @@
-import Experience from "../../components/Experience/Experience";
 import Navbar from "../../components/Navbar/Navbar";
 import ProjectSlider from "../../components/ProjectSlider/ProjectSlider";
 import WordRotator from "../../components/WordRotator/WordRotator";
