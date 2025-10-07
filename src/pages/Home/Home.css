@@ -1,3 +1,7 @@
+.center {
+    margin: 0 20%;
+}
+
 .main-section {
     display: flex;
     align-items: center;
@@ -7,15 +11,11 @@
 }
 
 .word-rotator-section {
-    width: 75%;
+    width: 70%;
 }
 
 .project-slider-section {
     width: 25%;
-}
-
-.about-me {
-    padding: 150px;
 }
 
 .about-me p {

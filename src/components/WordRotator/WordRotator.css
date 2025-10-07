@@ -4,6 +4,7 @@
     opacity: 1;
     /* Começa visível */
     display: inline-block;
+    color: aquamarine;
     /* Garante que o span se comporte bem no layout */
 }
 
@@ -25,7 +26,7 @@ span {
 }
 
 .mainWord span {
-    font-size: 8em;
+    font-size: 5em;
 }
 
 @media screen and (max-width: 900px) {
