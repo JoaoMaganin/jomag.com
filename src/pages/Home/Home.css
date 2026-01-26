@@ -1,5 +1,5 @@
 .center {
-    margin: 0 20%;
+    margin: 0 15%;
 }
 
 .main-section {
@@ -21,6 +21,16 @@
 .about-me p {
     color: white;
     font-size: 1.5em;
+}
+
+.my-experiences {
+    margin: 150px 0;
+}
+
+.my-experiences h1 {
+    font-size: 4em;
+    color: white;
+    margin-bottom: 0px;
 }
 
 @media screen and (max-width: 900px) {

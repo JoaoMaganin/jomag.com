@@ -1,3 +1,4 @@
+import Experiences from "../../components/Experiences/Experiences";
 import Navbar from "../../components/Navbar/Navbar";
 import ProjectSlider from "../../components/ProjectSlider/ProjectSlider";
 import WordRotator from "../../components/WordRotator/WordRotator";
@@ -28,7 +29,7 @@ const Home = () => {
                 </section>
 
                 <section className="my-experiences">
-
+                    <Experiences />
                 </section>
             </div>
         </div>
