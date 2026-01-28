@@ -14,11 +14,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import './Navbar.css'
 
-const pages = ['Linkedin', 'Github', 'Currículo'];
-
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -102,7 +100,7 @@ function Navbar() {
 
                         <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'><GitHubIcon fontSize='large' /></a>
 
-                        <a href="" className='containerLinks'>Currículo</a>
+                        <a href={`${process.env.PUBLIC_URL}/assets/cv_joaomaganin.pdf`} target='_blank' rel="noreferrer" className='containerLinks'>Currículo</a>
                     </Box>
 
 
