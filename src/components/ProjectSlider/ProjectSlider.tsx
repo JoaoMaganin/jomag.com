@@ -1,20 +1,14 @@
-// src/components/ProjectSlider/ProjectSlider.tsx
-
 import React, { useState, useEffect } from 'react';
 import './ProjectSlider.css';
 
-// Opcional: interface para o objeto de projeto se estiver usando TypeScript
 interface ProjectImage {
   src: string;
   alt: string;
 }
 
-// Coloque suas imagens aqui
 const PROJECT_IMAGES: ProjectImage[] = [
     { src: `${process.env.PUBLIC_URL}/assets/images/project1.png`, alt: 'ERP Maganin Automecânica' },
     { src: `${process.env.PUBLIC_URL}/assets/images/project2.jpg`, alt: 'Employee Management System' },
-    // { src: `${process.env.PUBLIC_URL}/assets/images/avatar.jpg`, alt: 'Aplicativo de Tarefas Mobile' },
-    // { src: `${process.env.PUBLIC_URL}/logo512.png`, alt: 'Website Corporativo Moderno' },
 ];
 
 const ProjectSlider: React.FC = () => {
@@ -29,7 +23,7 @@ const ProjectSlider: React.FC = () => {
     // Função de limpeza: é MUITO importante limpar o intervalo
     // quando o componente for "desmontado" (sair da tela) para evitar vazamento de memória.
     return () => clearInterval(slideInterval);
-  }, []); // O array de dependências vazio `[]` faz com que este useEffect rode apenas uma vez, quando o componente é montado.
+  }, []);
 
   if (!PROJECT_IMAGES || PROJECT_IMAGES.length === 0) {
     return <div className="project-slider-empty">Nenhum projeto para exibir.</div>;

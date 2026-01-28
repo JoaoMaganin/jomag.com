@@ -1,35 +1,31 @@
-/* src/components/ProjectSlider/ProjectSlider.css */
-
 .project-slider-container {
   max-width: 800px;
   margin: 40px auto;
   border-radius: 8px;
-  /* Chave para o efeito de slider: esconde tudo que "vazar" para fora do contêiner */
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .project-slider-wrapper {
-  /* Coloca todas as imagens em uma única linha horizontal */
   display: flex;
-  /* Adiciona a transição suave. Quando o 'transform' mudar, ele animará por 0.8s */
   transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-image {
-  /* Garante que cada imagem ocupe 100% da largura do contêiner */
   width: 100%;
-  aspect-ratio: 1 / 1; /* Altura fixa para consistência */
-  /* Impede que a imagem encolha */
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
-  /* Redimensiona a imagem para preencher o espaço sem distorcer, cortando o excesso */
   object-fit: cover;
   display: block;
 }
 
-.project-slider-empty {
-  text-align: center;
-  padding: 50px;
-  color: #555;
-  font-style: italic;
+@media screen and (max-width: 900px) {
+  .project-slider-container {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  .project-image {
+    aspect-ratio: 4 / 3; 
+  }
 }

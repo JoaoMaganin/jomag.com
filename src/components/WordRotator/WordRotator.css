@@ -1,16 +1,13 @@
 .wordRotator {
-    /* A transição suave de 0.5 segundos aplicada à propriedade 'opacity' */
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
-    /* Começa visível */
     display: inline-block;
     color: aquamarine;
-    /* Garante que o span se comporte bem no layout */
+    white-space: nowrap; 
 }
 
 .wordRotator.fading {
     opacity: 0;
-    /* Fica invisível quando a classe 'fading' é aplicada */
 }
 
 span {
@@ -22,15 +19,35 @@ span {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 50px;
+    margin: 50px 0;
+    width: 100%;
+    text-align: center;
 }
 
 .mainWord span {
-    font-size: 5em;
+    font-size: clamp(3rem, 8vw, 5rem);
+    line-height: 1.2;
 }
 
 @media screen and (max-width: 900px) {
+    .mainWord {
+        margin: 20px 0;
+    }
+
     .mainWord span {
-        font-size: 4.5em;
+        font-size: 2.8rem; 
+        display: block;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .wordRotator {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .mainWord span {
+        font-size: 2.2rem;
     }
 }
