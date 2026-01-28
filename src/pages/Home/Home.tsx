@@ -1,5 +1,6 @@
 import Experiences from "../../components/Experiences/Experiences";
 import Navbar from "../../components/Navbar/Navbar";
+import ProjectGallery from "../../components/ProjectGallery/ProjectGallery";
 import ProjectSlider from "../../components/ProjectSlider/ProjectSlider";
 import WordRotator from "../../components/WordRotator/WordRotator";
 import "./Home.css";
@@ -33,6 +34,10 @@ const Home = () => {
 
                 <section className="my-experiences">
                     <Experiences />
+                </section>
+
+                <section className="my-experiences">
+                    <ProjectGallery />
                 </section>
             </div>
         </div>
