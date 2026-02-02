@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Experiences.css';
 
-const Experiences = () => {
-    const experiences = [
+const EXPERIENCE_DATA = [
+        {
+            empresa: "DE PAULO PÃES",
+            cargo: "Analista de TI Júnior",
+            duracao: "DEZ/2025 - ATUAL",
+            atividades: [
+                "Microsoft 365: Apoio na contratação e implantação do Microsoft Business",
+                "Domínio e hospadagem: Auxílio na compra de domínio, hospedagem e criação de emails corporativos",
+                "Suporte ao cliente: Prestação de suporte interno para o sistema ERP da empresa",
+                "Manutenção de hardware: Apoio na manutenção de hardwares internos",],
+            techs: ["Microsoft Business", "Domínios", "Hospedagens", "Hardware", "Suporte"]
+        },
         {
             empresa: "BNDES",
             cargo: "Estagiário em Desenvolvimento de Software",
@@ -19,34 +29,58 @@ const Experiences = () => {
         },
     ];
 
+const Experiences = () => {
+
+    const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+
+    useEffect(() => {
+        if (window.innerWidth > 768) {
+            setOpenIndexes(EXPERIENCE_DATA.map((_, i) => i));
+        }
+    }, []);
+
+    const toggleExperience = (index: number) => {
+        setOpenIndexes(prev => 
+            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+        );
+    };
+
     return (
         <section className="experience-container">
             <h2 className="section-title">Experiência</h2>
             <div className="experience-list">
-                {experiences.map((exp, index) => (
-                    <div key={index} className="experience-card">
-                        <div className="experience-header">
-                            <div className="title-group">
-                                <h3 className="role">{exp.cargo}</h3>
-                                <span className="company">{exp.empresa}</span>
+                {EXPERIENCE_DATA.map((exp, index) => {
+                    const isOpen = openIndexes.includes(index);
+                    return (
+                        <div key={index} className={`experience-card ${isOpen ? 'is-open' : ''}`}>
+                            <div className="experience-header" onClick={() => toggleExperience(index)}>
+                                <div className="title-group">
+                                    <h3 className="role">{exp.cargo}</h3>
+                                    <span className="company">{exp.empresa}</span>
+                                </div>
+                                <div className="header-right">
+                                    <span className="duration">{exp.duracao}</span>
+                                    <span className={`toggle-arrow ${isOpen ? 'active' : ''}`}>▼</span>
+                                </div>
                             </div>
-                            <span className="duration">{exp.duracao}</span>
-                        </div>
 
-                        <div className="experience-content">
-                            <ul className="tasks-list">
-                                {exp.atividades.map((item, i) => (
-                                    <li key={i}>{item}</li>
-                                ))}
-                            </ul>
-                            <div className="tech-stack">
-                                {exp.techs.map((tech, i) => (
-                                    <span key={i} className="tech-badge">{tech}</span>
-                                ))}
+                            <div className={`experience-collapse ${isOpen ? 'expanded' : 'collapsed'}`}>
+                                <div className="experience-content">
+                                    <ul className="tasks-list">
+                                        {exp.atividades.map((item, i) => (
+                                            <li key={i}>{item}</li>
+                                        ))}
+                                    </ul>
+                                    <div className="tech-stack">
+                                        {exp.techs.map((tech, i) => (
+                                            <span key={i} className="tech-badge">{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </section>
     );

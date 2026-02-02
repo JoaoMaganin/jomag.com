@@ -1,4 +1,3 @@
-/* Container Principal */
 .experience-container {
     margin: 0 auto;
     font-family: 'Inter', sans-serif;
@@ -14,19 +13,17 @@
     display: inline-block;
 }
 
-/* Card com Efeitos de Versão Anterior */
 .experience-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 28px;
     margin-bottom: 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animação mais suave */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
 }
 
-/* Efeito de Hover (O "Vivo" que você pediu) */
 .experience-card:hover {
     transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.07);
@@ -34,12 +31,27 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Header Responsivo */
 .experience-header {
     display: flex;
-    flex-direction: column; /* Mobile first */
+    flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
+    cursor: pointer; /* Garante que o usuário saiba que é clicável */
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-arrow {
+    color: #00d2ff;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-arrow.active {
+    transform: rotate(180deg);
 }
 
 .role {
@@ -65,10 +77,25 @@
     background: rgba(255, 255, 255, 0.05);
     padding: 4px 12px;
     border-radius: 20px;
-    align-self: flex-start;
 }
 
-/* Conteúdo */
+/* LÓGICA DE COLAPSO MANTENDO A ESTRUTURA */
+.experience-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.experience-collapse.expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.experience-content {
+    overflow: hidden;
+}
+
 .tasks-list {
     list-style: none;
     padding: 0;
@@ -92,7 +119,6 @@
     font-weight: bold;
 }
 
-/* Tags de Tecnologia */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
@@ -111,25 +137,12 @@
     transition: 0.3s;
 }
 
-.tech-badge:hover {
-    background: #00d2ff;
-    color: #000;
-}
-
-/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
 @media (min-width: 768px) {
     .experience-header {
-        flex-direction: row; /* Lado a lado no Desktop */
+        flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
     }
 
-    .section-title {
-        font-size: 2.8rem;
-    }
-
-    .duration {
-        align-self: flex-start;
-        margin-top: 5px;
-    }
+    .section-title { font-size: 2.8rem; }
 }
