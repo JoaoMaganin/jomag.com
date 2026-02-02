@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jomag.com/static/css/main.0d97419e.css",
-    "main.js": "/jomag.com/static/js/main.e745b842.js",
+    "main.css": "/jomag.com/static/css/main.e6da4208.css",
+    "main.js": "/jomag.com/static/js/main.67bbb8fd.js",
     "static/js/453.1d373e63.chunk.js": "/jomag.com/static/js/453.1d373e63.chunk.js",
     "index.html": "/jomag.com/index.html",
-    "main.0d97419e.css.map": "/jomag.com/static/css/main.0d97419e.css.map",
-    "main.e745b842.js.map": "/jomag.com/static/js/main.e745b842.js.map",
+    "main.e6da4208.css.map": "/jomag.com/static/css/main.e6da4208.css.map",
+    "main.67bbb8fd.js.map": "/jomag.com/static/js/main.67bbb8fd.js.map",
     "453.1d373e63.chunk.js.map": "/jomag.com/static/js/453.1d373e63.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d97419e.css",
-    "static/js/main.e745b842.js"
+    "static/css/main.e6da4208.css",
+    "static/js/main.67bbb8fd.js"
   ]
 }
