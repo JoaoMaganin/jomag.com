@@ -9,6 +9,8 @@ interface ProjectImage {
 const PROJECT_IMAGES: ProjectImage[] = [
     { src: `${process.env.PUBLIC_URL}/assets/images/project1.png`, alt: 'Maganin Automecânica' },
     { src: `${process.env.PUBLIC_URL}/assets/gifs/syncflow.gif`, alt: 'SyncFlow' },
+    { src: `${process.env.PUBLIC_URL}/assets/images/project2.jpg`, alt: 'SyncFlow' },
+    { src: `${process.env.PUBLIC_URL}/assets/images/itau.png`, alt: 'SyncFlow' },
 ];
 
 const ProjectSlider: React.FC = () => {
