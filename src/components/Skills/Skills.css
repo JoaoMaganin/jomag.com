@@ -1,0 +1,96 @@
+.skills-container {
+    margin: 80px auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 30px;
+    transition: all 0.3s ease;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-category h3 {
+    color: #00d2ff;
+    margin: 10px 0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animação de Colapso */
+.skills-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-out, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 0;
+}
+
+.skills-collapse.expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.skill-list {
+    overflow: hidden;
+    /* Necessário para a animação de grid funcionar */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Itens de Habilidade */
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #ddd;
+    transition: all 0.2s ease;
+}
+
+.skill-icon {
+    font-size: 1.1rem;
+    color: #00d2ff;
+    display: flex;
+}
+
+.expand-icon {
+    color: #00d2ff;
+    transition: transform 0.3s ease;
+}
+
+.expand-icon.rotate {
+    transform: rotate(180deg);
+}
+
+/* Hover no Desktop */
+@media (min-width: 769px) {
+    .skill-category:hover {
+        border-color: #00d2ff;
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Ajustes Mobile */
+@media (max-width: 768px) {
+    .skill-category {
+        padding: 15px 20px;
+    }
+}

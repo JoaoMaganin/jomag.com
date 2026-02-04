@@ -6,6 +6,7 @@ import WordRotator from "../../components/WordRotator/WordRotator";
 import ProjectGallery from "../../components/ProjectGallery/ProjectGallery";
 import "./Home.css";
 import Footer from '../../components/Footer/Footer';
+import Skills from '../../components/Skills/Skills';
 
 const Home: React.FC = () => {
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
@@ -45,6 +46,7 @@ const Home: React.FC = () => {
                         corporativos e projetos freelancer, onde desenvolvi a habilidade de transformar requisitos de negócio 
                         em código eficiente, sempre buscando aprender e aplicar as melhores práticas do mercado.
                     </p>
+                    <Skills />
                 </section>
 
                 <section className="my-experiences">

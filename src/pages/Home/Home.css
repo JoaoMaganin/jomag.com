@@ -66,10 +66,6 @@ html, body {
         justify-content: center; /* Garante que o slider fique centralizado */
     }
 
-    .about-me {
-        padding: 20px 0;
-    }
-
     .about-me p {
         font-size: 1.2em; /* Texto levemente menor para caber melhor no celular */
         text-align: justify; /* Melhora a leitura em blocos de texto mobile */
