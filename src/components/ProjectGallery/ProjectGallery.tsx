@@ -14,7 +14,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "ERP Maganin Automecânica",
+    title: "Maganin Automecânica",
     description: "Sistema de gestão completo para oficinas.",
     longDescription: "Sistema focado na oficina automotiva Maganin Automecânica, visando entregar uma gestão integrada de estoque, finanças, vendas. Até o momento, somente a primeira versão contendo o módulo de estoque foi entregue.. Utilizei Spring Boot no back-end e Next.js no front-end para garantir performance e SEO.",
     image: `${process.env.PUBLIC_URL}/assets/images/project1.png`,
