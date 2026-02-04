@@ -5,6 +5,7 @@ import ProjectSlider from "../../components/ProjectSlider/ProjectSlider";
 import WordRotator from "../../components/WordRotator/WordRotator";
 import ProjectGallery from "../../components/ProjectGallery/ProjectGallery";
 import "./Home.css";
+import Footer from '../../components/Footer/Footer';
 
 const Home: React.FC = () => {
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
@@ -57,6 +58,9 @@ const Home: React.FC = () => {
                     </section>
                 </div>
             </div>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }
