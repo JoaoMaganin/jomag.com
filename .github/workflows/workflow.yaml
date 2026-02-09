@@ -1,21 +1,20 @@
 name: Continuos Integration
 
-#trigger que dispara o pipeline
-on: [pull_request, push]
+on: pull_request
 
 jobs:
   continuos-integration:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: action/checkout@v3
-    - name: Using Node.js
-      uses: actions/setup-nome@v2
-      with:
-        node-version: 24.x
-    - name: run install, build, test and deploy
-      run: |
-        npm install
-        npm run build
-        npm run test
-        npm run deploy
+    steps:
+      - uses: actions/checkout@v3
+      - name: Using Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.
+      - name: run install, build and test
+        run: |
+          npm install
+          npm run build 
+          npm run test
+          npm run deploy
