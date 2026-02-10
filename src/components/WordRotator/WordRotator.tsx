@@ -7,8 +7,9 @@ const WordRotator = ({ period = 3000 }) => {
     const [isFading, setIsFading] = useState(false);
 
     const SKILLS_LIST = [
-        "Python",
         "Java",
+        "NestJS",
+        "Python",
         "TypeScript",
         "Springboot",
         "ReactJS",
@@ -28,7 +29,7 @@ const WordRotator = ({ period = 3000 }) => {
         }, period);
 
         return () => clearInterval(interval);
-    }, [period]);
+    }, [period, SKILLS_LIST.length]);
 
     if (!SKILLS_LIST || SKILLS_LIST.length === 0) {
         return null;
