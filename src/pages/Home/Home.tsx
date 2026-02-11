@@ -7,9 +7,9 @@ import ProjectGallery from "../../components/ProjectGallery/ProjectGallery";
 import "./Home.css";
 import Footer from '../../components/Footer/Footer';
 import Skills from '../../components/Skills/Skills';
+import { SKILLS_LIST } from '../../constants/skills';
 
 const Home: React.FC = () => {
-    console.log('CI/CD working');
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
     const galleryRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
             <div className="center">
                 <section className="main-section">
                     <div className="word-rotator-section">
-                        <WordRotator />
+                        <WordRotator skills={SKILLS_LIST} period={3000} />
                     </div>
                     {/* Envolvemos o slider em uma div que intercepta o clique na Home */}
                     <div 

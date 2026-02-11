@@ -1,35 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './WordRotator.css';
+import { SKILLS_LIST } from '../../constants/skills';
+import { WordRotatorProps } from '../../types';
 
-
-const WordRotator = ({ period = 3000 }) => {
+const WordRotator: React.FC<WordRotatorProps> = ({ skills = [], period = 3000 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFading, setIsFading] = useState(false);
 
-    const SKILLS_LIST = [
-        "Java",
-        "NestJS",
-        "Python",
-        "TypeScript",
-        "Springboot",
-        "ReactJS",
-        "Angular",
-        "Django",
-        "MySQL",
-        "SQLServer"
-    ];
     useEffect(() => {
+        // Se a lista estiver vazia, não inicia o intervalo
+        if (skills.length === 0) return;
+
         const interval = setInterval(() => {
             setIsFading(true);
 
             setTimeout(() => {
-                setCurrentIndex(prevIndex => (prevIndex + 1) % SKILLS_LIST.length);
+                setCurrentIndex(prevIndex => (prevIndex + 1) % skills.length);
                 setIsFading(false);
             }, 500);
         }, period);
 
         return () => clearInterval(interval);
-    }, [period, SKILLS_LIST.length]);
+    }, [period, skills.length]);
 
     if (!SKILLS_LIST || SKILLS_LIST.length === 0) {
         return null;
