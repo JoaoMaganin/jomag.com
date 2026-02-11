@@ -13,15 +13,16 @@ jobs:
       - name: Using Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.
+          node-version: 24.x
 
       - name: run install, build, test and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Define o token como variável de ambiente
         run: |
           npm install
           CI=false npm run build
-          npm test -- --passWithNoTests
+          npm run test
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          # Injeta o token na URL remota para permitir o push
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          npm run deploy
+          # O comando abaixo passa o token diretamente para o script gh-pages
+          npm run deploy -- -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
