@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import Skills from '../../components/Skills/Skills';
 
 const Home: React.FC = () => {
+    console.log('CI/CD working');
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
     const galleryRef = useRef<HTMLDivElement>(null);
 
