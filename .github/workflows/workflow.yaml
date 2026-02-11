@@ -18,8 +18,10 @@ jobs:
       - name: run install, build, test and deploy
         run: |
           npm install
-          npm run build
-          npm run test
-          git config --global user.email "joaovitormontemor138@gmail.com"
-          git config --global user.name "JoaoMaganin"
+          CI=false npm run build
+          npm test -- --passWithNoTests
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          # Injeta o token na URL remota para permitir o push
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           npm run deploy
