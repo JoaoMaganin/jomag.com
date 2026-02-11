@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# 🚀 JoaoMaganin | Full Stack Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é o repositório do meu portfólio profissional, desenvolvido para consolidar minha trajetória como desenvolvedor Full Stack. O projeto une minha experiência prática em sistemas corporativos com arquiteturas modernas e escaláveis.
 
-## Available Scripts
+Acesse no link: [https://joaomaganin.github.io/jomag.com](https://joaomaganin.github.io/jomag.com)
 
-In the project directory, you can run:
+![Status do Build](https://github.com/JoaoMaganin/jomag.com/actions/workflows/workflow.yaml/badge.svg)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joaomontemor/)
 
-### `npm start`
+## 🛠️ Stack Tecnológica
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O projeto foi construído com foco em performance, tipagem estrita e as melhores práticas do ecossistema React:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* **Frontend**: React 18 e TypeScript.
+* **UI/UX**: Material UI (MUI) para componentes responsivos.
+* **Roteamento**: TanStack Router (Roteamento Type-safe).
+* **Qualidade**: Jest e React Testing Library para Testes Unitários.
+* **DevOps**: GitHub Actions (CI/CD) para automação de testes e deploy.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏗️ Diferenciais do Projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🧪 Qualidade de Software (QA)
+Este projeto inclui uma suíte de testes unitários que validam componentes críticos garantindo que a aplicação permaneça funcional após cada atualização.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔄 Pipeline de CI/CD Automatizado
+Implementei um workflow robusto no GitHub Actions que automatiza todo o ciclo de entrega:
+1.  **Validação**: Execução de Testes Unitários pré-build.
+2.  **Compilação**: Build otimizado para produção ignorando avisos não fatais.
+3.  **Deploy**: Publicação automática no GitHub Pages utilizando autenticação via `GITHUB_TOKEN`.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📂 Projetos em Destaque
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+No portfólio, apresento detalhes técnicos de soluções complexas que desenvolvi:
+* **SyncFlow**: Gestão de tarefas baseada em microsserviços (NestJS, RabbitMQ, PostgreSQL).
+* **Maganin Automecânica**: ERP Full Stack para oficinas mecânicas (Java/Spring Boot e Next.js).
+* **Itaú Tech Challenge**: API de gestão financeira com foco em Clean Code e Testes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🚀 Como rodar localmente
 
-## Learn More
+1.  **Clone o repositório**:
+    ```bash
+    git clone [https://github.com/JoaoMaganin/jomag.com.git](https://github.com/JoaoMaganin/jomag.com.git)
+    ```
+2.  **Instale as dependências**:
+    ```bash
+    npm install
+    ```
+3.  **Inicie o ambiente de desenvolvimento**:
+    ```bash
+    npm start
+    ```
+4.  **Rode a suíte de testes**:
+    ```bash
+    npm test
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Desenvolvido por **João Vitor Maganin**.
