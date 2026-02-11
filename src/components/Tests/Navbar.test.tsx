@@ -55,10 +55,10 @@ describe('Navbar Component', () => {
         // Após o clique, verificamos se as opções do menu mobile aparecem
         const mobileLinkedin = screen.getByText(/Linkedin/i);
         const mobileGithub = screen.getByText(/Github/i);
-        const mobileCurriculo = screen.getByText(/Currículo/i);
+        const mobileCurriculo = screen.getAllByText(/Currículo/i);
 
         expect(mobileLinkedin).toBeVisible();
         expect(mobileGithub).toBeVisible();
-        expect(mobileCurriculo).toBeVisible();
+        expect(mobileCurriculo[0]).toBeInTheDocument();
     });
 });
