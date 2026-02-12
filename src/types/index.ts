@@ -8,3 +8,8 @@ export interface ProjectImage {
   alt: string;
   title: string;
 }
+
+export interface ProjectSliderProps {
+  images: ProjectImage[];
+  autoPlayInterval?: number;
+}

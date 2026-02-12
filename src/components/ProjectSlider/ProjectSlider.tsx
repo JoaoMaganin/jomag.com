@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectSlider.css';
-import { ProjectImage } from '../../types';
+import { ProjectSliderProps } from '../../types';
 
-interface ProjectSliderProps {
-  images: ProjectImage[];
-  autoPlayInterval?: number;
-}
+
 
 const ProjectSlider: React.FC<ProjectSliderProps> = (
   {
