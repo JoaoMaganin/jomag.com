@@ -8,6 +8,7 @@ import "./Home.css";
 import Footer from '../../components/Footer/Footer';
 import Skills from '../../components/Skills/Skills';
 import { SKILLS_LIST } from '../../constants/skills';
+import { PROJECT_IMAGES } from '../../constants/projectImages';
 
 const Home: React.FC = () => {
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
@@ -35,7 +36,7 @@ const Home: React.FC = () => {
                         onClick={scrollToGallery} 
                         style={{ cursor: 'pointer' }}
                     >
-                        <ProjectSlider />
+                        <ProjectSlider images={PROJECT_IMAGES} />
                     </div>
                 </section>
 
