@@ -8,7 +8,7 @@ import "./Home.css";
 import Footer from '../../components/Footer/Footer';
 import Skills from '../../components/Skills/Skills';
 import { SKILLS_LIST } from '../../constants/skills';
-import { PROJECT_IMAGES } from '../../constants/projectImages';
+import { PROJECT_IMAGES, PROJECTS } from '../../constants/projects';
 
 const Home: React.FC = () => {
     // Definimos o tipo como HTMLDivElement para evitar o erro de 'never'
@@ -58,7 +58,7 @@ const Home: React.FC = () => {
                 {/* Usamos uma div de ancoragem com a Ref */}
                 <div ref={galleryRef} style={{ scrollMarginTop: '20px' }}>
                     <section className="my-experiences">
-                        <ProjectGallery />
+                        <ProjectGallery projects={PROJECTS} />
                     </section>
                 </div>
             </div>
