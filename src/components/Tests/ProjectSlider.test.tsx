@@ -1,7 +1,7 @@
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProjectSlider from '../ProjectSlider/ProjectSlider';
-import { PROJECT_IMAGES } from '../../constants/projectImages';
+import { PROJECT_IMAGES } from '../../constants/projects';
 // Importação da constante real
 
 describe('ProjectSlider Component', () => {
