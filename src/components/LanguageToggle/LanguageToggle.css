@@ -1,0 +1,55 @@
+.language-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 26px;
+  background-color: #333; /* Cor do fundo do switch */
+  border-radius: 50px;
+  padding: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  position: relative;
+  border: 1px solid #444;
+}
+
+/* Cor quando estiver em inglês (opcional: mudar a cor do fundo) */
+.toggle-switch.en {
+  background-color: #007bff; /* Um azul mais vibrante para destacar */
+}
+
+.toggle-knob {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Movimento da bolinha */
+.toggle-switch.en .toggle-knob {
+  transform: translateX(24px);
+}
+
+.lang-label {
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.lang-label.active {
+  color: #fff;
+}
+
+/* Efeito de hover */
+.toggle-switch:hover {
+  filter: brightness(1.2);
+}

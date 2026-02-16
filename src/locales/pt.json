@@ -1,0 +1,11 @@
+{
+  "translation": {
+    "nav": {
+      "projects": "Projetos",
+      "experience": "Experiência"
+    },
+    "hero": {
+      "tagline": "Desenvolvedor Fullstack e Analista de sistemas"
+    }
+  }
+}

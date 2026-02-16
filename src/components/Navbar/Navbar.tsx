@@ -13,6 +13,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import './Navbar.css'
+import LanguageToggle from '../LanguageToggle/LanguageToggle';
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -87,15 +88,6 @@ function Navbar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block', fontFamily: "Sansation" }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
                         <a href="https://www.linkedin.com/in/joaomontemor/" target='_blank' rel="noreferrer" className='containerLinks'><LinkedInIcon fontSize='large' /></a>
 
                         <a href="https://github.com/JoaoMaganin/" target='_blank' rel="noreferrer" className='containerLinks'><GitHubIcon fontSize='large' /></a>
@@ -111,6 +103,11 @@ function Navbar() {
                             <VerifiedIcon style={{ color: "white" }} />
                         </IconButton>
                     </Box>
+
+                    <Box>
+                        <LanguageToggle />
+                    </Box>
+                    
 
                 </Toolbar>
             </Container>
