@@ -3,6 +3,7 @@ import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Experience from "./components/sections/Experience";
 import CustomCursor from "./components/Customcursor";
+import Projects from "./components/sections/Projects";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Hero />
       <About />
       <Experience />
+      <Projects />
     </>
   );
 }

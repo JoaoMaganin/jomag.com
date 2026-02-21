@@ -75,7 +75,7 @@ export default function Experience() {
             <div className="mb-4 h-px w-16" style={{ backgroundColor: "var(--accent)" }} />
             <h2
               className="text-5xl font-bold md:text-6xl"
-              style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
+              style={{ color: "var(--text-primary)" }}
             >
               {t.title}
             </h2>
@@ -166,7 +166,7 @@ export default function Experience() {
         </div>
 
         {/* Âncora de snap ao subir — posicionada no fim do padding */}
-        <div className="section-free" />
+        
       </section>
 
       {/* Modal */}

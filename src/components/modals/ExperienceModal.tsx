@@ -74,7 +74,7 @@ export default function ExperienceModal({ item, onClose }: Props) {
           </span>
           <h3
             className="text-2xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
+            style={{ color: "var(--text-primary)" }}
           >
             {item.role}
           </h3>

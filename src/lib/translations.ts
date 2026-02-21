@@ -10,11 +10,21 @@ export type ExperienceItem = {
   tags: string[];
 };
 
+export type ProjectItem = {
+  title: string;
+  description: string;
+  longDescription: string;
+  tags: string[];
+  image: string; // URL ou cor de placeholder
+  link?: string;
+};
+
 export type Translation = {
   nav: Record<NavKey, string>;
   hero: { subtitle: string; scroll: string };
   about: { title: string; bio1: string; bio2: string; skills: string };
   experience: { title: string; items: ExperienceItem[] };
+  projects: { title: string; items: ProjectItem[] };
 };
 
 export const translations: Record<"pt" | "en", Translation> = {
@@ -83,6 +93,51 @@ export const translations: Record<"pt" | "en", Translation> = {
         },
       ],
     },
+    projects: {
+      title: "Projetos",
+      items: [
+        {
+          title: "Design System",
+          description: "Biblioteca de componentes escalável com mais de 80 componentes documentados.",
+          longDescription: "Um design system completo construído do zero para atender múltiplos produtos. Inclui tokens de design, componentes acessíveis e documentação interativa no Storybook.",
+          tags: ["React", "TypeScript", "Storybook", "Tailwind"],
+          image: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          link: "https://google.com",
+        },
+        {
+          title: "Portfolio v2",
+          description: "Portfólio pessoal com animações avançadas e scroll storytelling.",
+          longDescription: "Este próprio portfólio! Construído com Vite + React, GSAP para animações complexas e um sistema de temas e idiomas totalmente customizado.",
+          tags: ["Vite", "React", "GSAP", "Tailwind"],
+          image: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2d1500 100%)",
+          link: "https://facebook.com",
+        },
+        {
+          title: "E-commerce UI",
+          description: "Interface de loja virtual com experiência de compra otimizada.",
+          longDescription: "Redesign completo da experiência de compra de um e-commerce, com foco em conversão e performance. Redução de 30% no tempo de checkout.",
+          tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
+          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          link: "https://instagram.com",
+        },
+        {
+          title: "Dashboard Analytics",
+          description: "Painel de análise de dados em tempo real com gráficos interativos.",
+          longDescription: "Dashboard para visualização de métricas de negócio com atualização em tempo real via WebSocket, filtros avançados e exportação de relatórios.",
+          tags: ["React", "D3.js", "WebSocket", "Node.js"],
+          image: "linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a3352 100%)",
+          link: "https://youtube.com",
+        },
+        {
+          title: "App Mobile",
+          description: "Aplicativo de produtividade com sincronização offline.",
+          longDescription: "App de gerenciamento de tarefas com suporte offline, sincronização em background e notificações push. Disponível para iOS e Android.",
+          tags: ["React Native", "Expo", "SQLite", "Redux"],
+          image: "linear-gradient(135deg, #1a0a1e 0%, #2d1040 50%, #1a0a1e 100%)",
+          link: "https://registro.br",
+        },
+      ],
+    },
   },
   en: {
     nav: {
@@ -146,6 +201,51 @@ export const translations: Record<"pt" | "en", Translation> = {
             "Maintenance and support of production projects",
           ],
           tags: ["HTML", "CSS", "JavaScript", "WordPress"],
+        },
+      ],
+    },
+    projects: {
+      title: "Projects",
+      items: [
+        {
+          title: "Design System",
+          description: "Scalable component library with 80+ documented components.",
+          longDescription: "A complete design system built from scratch to serve multiple products. Includes design tokens, accessible components and interactive Storybook documentation.",
+          tags: ["React", "TypeScript", "Storybook", "Tailwind"],
+          image: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          link: "https://github.com",
+        },
+        {
+          title: "Portfolio v2",
+          description: "Personal portfolio with advanced animations and scroll storytelling.",
+          longDescription: "This very portfolio! Built with Vite + React, GSAP for complex animations and a fully custom theme and language system.",
+          tags: ["Vite", "React", "GSAP", "Tailwind"],
+          image: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2d1500 100%)",
+          link: "https://github.com",
+        },
+        {
+          title: "E-commerce UI",
+          description: "Online store interface with optimized shopping experience.",
+          longDescription: "Complete redesign of an e-commerce shopping experience, focused on conversion and performance. 30% reduction in checkout time.",
+          tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
+          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          link: "https://github.com",
+        },
+        {
+          title: "Analytics Dashboard",
+          description: "Real-time data analysis panel with interactive charts.",
+          longDescription: "Business metrics visualization dashboard with real-time WebSocket updates, advanced filters and report exports.",
+          tags: ["React", "D3.js", "WebSocket", "Node.js"],
+          image: "linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a3352 100%)",
+          link: "https://github.com",
+        },
+        {
+          title: "Mobile App",
+          description: "Productivity app with offline sync.",
+          longDescription: "Task management app with offline support, background sync and push notifications. Available for iOS and Android.",
+          tags: ["React Native", "Expo", "SQLite", "Redux"],
+          image: "linear-gradient(135deg, #1a0a1e 0%, #2d1040 50%, #1a0a1e 100%)",
+          link: "https://github.com",
         },
       ],
     },
