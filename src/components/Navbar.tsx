@@ -1,15 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import { gsap } from "../lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { gsap } from "../lib/gsap";
+import { useLang } from "../context/LanguageContext";
+import { translations } from "../lib/translations";
 import { Sun, Moon } from "lucide-react";
 
-type Lang = "pt" | "en";
 type Theme = "light" | "dark";
-
-const translations: Record<Lang, Record<string, string>> = {
-  pt: { home: "Início", about: "Sobre", projects: "Projetos", contact: "Contato" },
-  en: { home: "Home", about: "About", projects: "Projects", contact: "Contact" },
-};
 
 const NAV_KEYS = ["home", "about", "projects", "contact"] as const;
 const NAV_HREFS: Record<string, string> = {
@@ -21,9 +17,11 @@ const NAV_HREFS: Record<string, string> = {
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
-  const [lang, setLang] = useState<Lang>("pt");
+  const { lang, setLang } = useLang();
   const [theme, setTheme] = useState<Theme>("dark");
   const [scrolled, setScrolled] = useState(false);
+
+  const t = translations[lang].nav;
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -46,7 +44,6 @@ export default function Navbar() {
     { scope: navRef }
   );
 
-  const t = translations[lang];
   const isDark = theme === "dark";
 
   return (
@@ -80,7 +77,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-white/5 p-1">
-          {(["pt", "en"] as Lang[]).map((l) => (
+          {(["pt", "en"] as const).map((l) => (
             <button
               key={l}
               onClick={() => setLang(l)}

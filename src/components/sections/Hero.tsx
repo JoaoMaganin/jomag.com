@@ -1,12 +1,17 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "../../lib/gsap";
+import { useLang } from "../../context/LanguageContext";
+import { translations } from "../../lib/translations";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
+
+  const { lang } = useLang();
+  const t = translations[lang].hero;
 
   useGSAP(
     () => {
@@ -25,7 +30,6 @@ export default function Hero() {
       ref={sectionRef}
       className="section relative flex flex-col items-center justify-center overflow-hidden bg-neutral-950"
     >
-      {/* Grid decorativo */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
@@ -33,8 +37,6 @@ export default function Hero() {
           backgroundSize: "80px 80px",
         }}
       />
-
-      {/* Brilho */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-600/10 blur-[120px]" />
 
       <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
@@ -46,12 +48,12 @@ export default function Hero() {
           Seu<span className="text-amber-400">Nome</span>
         </h1>
         <p ref={subRef} className="max-w-xl text-lg font-light leading-relaxed text-neutral-400">
-          Desenvolvedor frontend apaixonado por experiências que ficam na memória.
+          {t.subtitle}
         </p>
       </div>
 
       <div ref={indicatorRef} className="absolute bottom-10 flex flex-col items-center gap-2 text-neutral-500">
-        <span className="text-xs uppercase tracking-widest">scroll</span>
+        <span className="text-xs uppercase tracking-widest">{t.scroll}</span>
         <div className="h-10 w-px bg-gradient-to-b from-neutral-500 to-transparent" />
       </div>
     </section>

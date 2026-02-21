@@ -1,11 +1,15 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "../../lib/gsap";
+import { useLang } from "../../context/LanguageContext";
+import { translations } from "../../lib/translations";
 
 const skills = ["React", "TypeScript", "GSAP", "Node.js", "Tailwind", "Figma"];
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { lang } = useLang();
+  const t = translations[lang].about;
 
   useGSAP(
     () => {
@@ -40,24 +44,18 @@ export default function About() {
             className="about-text text-5xl font-bold text-white md:text-6xl"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Sobre mim
+            {t.title}
           </h2>
         </div>
 
         <div className="grid gap-16 md:grid-cols-2">
           <div className="flex flex-col gap-5">
-            <p className="about-text text-lg leading-relaxed text-neutral-400">
-              Sou um desenvolvedor frontend com foco em criar interfaces que combinam performance e beleza.
-              Acredito que boas animações não são enfeite — são comunicação.
-            </p>
-            <p className="about-text text-lg leading-relaxed text-neutral-400">
-              Tenho experiência construindo produtos digitais do zero, da arquitetura de componentes
-              à entrega final com atenção obsessiva aos detalhes.
-            </p>
+            <p className="about-text text-lg leading-relaxed text-neutral-400">{t.bio1}</p>
+            <p className="about-text text-lg leading-relaxed text-neutral-400">{t.bio2}</p>
           </div>
 
           <div>
-            <p className="about-text mb-6 text-sm uppercase tracking-widest text-neutral-500">Tecnologias</p>
+            <p className="about-text mb-6 text-sm uppercase tracking-widest text-neutral-500">{t.skills}</p>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (
                 <span
