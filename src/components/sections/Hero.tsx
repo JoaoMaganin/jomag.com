@@ -125,7 +125,7 @@ export default function Hero() {
         <p
           ref={subRef}
           className="max-w-xl text-lg font-light leading-relaxed"
-          style={{ color: "var(--text-muted)", opacity: 0 }}
+          style={{ color: "var(--text-primary)", opacity: 0 }}
         >
           {t.subtitle}
         </p>
