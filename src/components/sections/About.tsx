@@ -84,6 +84,7 @@ export default function About() {
                     borderColor: "var(--border)",
                     backgroundColor: "var(--bg-card)",
                     color: "var(--text-muted)",
+                    cursor: "pointer"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "var(--border-hover)";

@@ -19,6 +19,7 @@ export default function Hero() {
 
   useGSAP(
     () => {
+      // ── Intro ──────────────────────────────────────────────────────────────
       const finalSize = window.innerWidth >= 768 ? "6rem" : "3.75rem";
       const introSize = `${Math.min(window.innerWidth * 0.15, 220)}px`;
 

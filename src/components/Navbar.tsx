@@ -58,7 +58,7 @@ export default function Navbar() {
         className="text-xl font-semibold tracking-tight transition-colors"
         style={{ color: "var(--accent)" }}
       >
-        Maganin
+          MAGANIN
       </a>
 
       <ul className="hidden list-none items-center gap-6 md:flex">
