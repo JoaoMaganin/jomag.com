@@ -2,10 +2,9 @@ import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "../lib/gsap";
 import { useLang } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import { translations } from "../lib/translations";
 import { Sun, Moon } from "lucide-react";
-
-type Theme = "light" | "dark";
 
 const NAV_KEYS = ["home", "about", "projects", "contact"] as const;
 const NAV_HREFS: Record<string, string> = {
@@ -18,14 +17,11 @@ const NAV_HREFS: Record<string, string> = {
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const { lang, setLang } = useLang();
-  const [theme, setTheme] = useState<Theme>("dark");
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   const t = translations[lang].nav;
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -44,22 +40,24 @@ export default function Navbar() {
     { scope: navRef }
   );
 
-  const isDark = theme === "dark";
-
   return (
     <nav
       ref={navRef}
       className={[
         "fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between px-6 md:px-14 transition-all duration-300",
-        scrolled ? "border-b border-white/[0.08] bg-neutral-950/80 backdrop-blur-xl" : "",
+        scrolled ? "border-b backdrop-blur-xl" : "",
       ].join(" ")}
+      style={{
+        borderColor: scrolled ? "var(--border)" : "transparent",
+        backgroundColor: scrolled ? "var(--bg-nav)" : "transparent",
+      }}
     >
       <a
         href="#hero"
-        className="text-xl font-semibold tracking-tight text-white transition-colors hover:text-amber-400"
-        style={{ fontFamily: "'Playfair Display', serif" }}
+        className="text-xl font-semibold tracking-tight transition-colors"
+        style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
       >
-        Seu<span className="text-amber-400">Nome</span>
+        Seu<span style={{ color: "var(--accent)" }}>Nome</span>
       </a>
 
       <ul className="hidden list-none items-center gap-8 md:flex">
@@ -67,7 +65,14 @@ export default function Navbar() {
           <li key={key}>
             <a
               href={NAV_HREFS[key]}
-              className="relative text-[0.72rem] font-medium uppercase tracking-widest text-neutral-400 transition-colors hover:text-white after:absolute after:-bottom-0.5 after:left-1/2 after:right-1/2 after:h-px after:bg-amber-400 after:transition-all after:duration-300 hover:after:left-0 hover:after:right-0"
+              className="relative text-[0.72rem] font-medium uppercase tracking-widest transition-colors after:absolute after:-bottom-0.5 after:left-1/2 after:right-1/2 after:h-px after:transition-all after:duration-300 hover:after:left-0 hover:after:right-0"
+              style={{
+                color: "var(--text-muted)",
+                // @ts-ignore
+                "--tw-after-bg": "var(--accent)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
             >
               {t[key]}
             </a>
@@ -76,28 +81,47 @@ export default function Navbar() {
       </ul>
 
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-white/5 p-1">
+        {/* Language toggle */}
+        <div
+          className="flex items-center gap-0.5 rounded-full border p-1"
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)" }}
+        >
           {(["pt", "en"] as const).map((l) => (
             <button
               key={l}
               onClick={() => setLang(l)}
-              className={[
-                "rounded-full px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest transition-all duration-200",
-                lang === l ? "bg-amber-500 text-white" : "text-neutral-400 hover:text-white",
-              ].join(" ")}
+              className="rounded-full px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest transition-all duration-200"
+              style={{
+                backgroundColor: lang === l ? "var(--accent)" : "transparent",
+                color: lang === l ? "#fff" : "var(--text-muted)",
+              }}
             >
               {l}
             </button>
           ))}
         </div>
 
+        {/* Theme toggle */}
         <button
-          onClick={() => setTheme(isDark ? "light" : "dark")}
+          onClick={toggleTheme}
           aria-label="Alternar tema"
-          className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-400 transition-all duration-200 hover:border-amber-400/50 hover:text-amber-400"
+          className="relative flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-200"
+          style={{
+            borderColor: "var(--border)",
+            backgroundColor: "var(--bg-card)",
+            color: "var(--text-muted)",
+          }}
         >
-          <Sun size={15} className={["absolute transition-all duration-300", isDark ? "scale-0 opacity-0 -rotate-90" : "scale-100 opacity-100 rotate-0"].join(" ")} />
-          <Moon size={15} className={["absolute transition-all duration-300", isDark ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 rotate-90"].join(" ")} />
+          <Sun
+            size={15}
+            className="absolute transition-all duration-300"
+            style={{ opacity: isDark ? 0 : 1, transform: isDark ? "scale(0) rotate(-90deg)" : "scale(1) rotate(0deg)" }}
+          />
+          <Moon
+            size={15}
+            className="absolute transition-all duration-300"
+            style={{ opacity: isDark ? 1 : 0, transform: isDark ? "scale(1) rotate(0deg)" : "scale(0) rotate(90deg)" }}
+          />
         </button>
       </div>
     </nav>

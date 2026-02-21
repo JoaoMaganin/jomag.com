@@ -33,34 +33,66 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="section relative flex flex-col items-center justify-center bg-neutral-900"
+      className="section relative flex flex-col items-center justify-center transition-colors duration-300"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
     >
-      <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-amber-600/5 blur-[100px]" />
+      {/* Brilho no canto */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] rounded-full blur-[100px]"
+        style={{ backgroundColor: "var(--accent-glow)" }}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 md:px-14">
+        {/* Header */}
         <div className="mb-16">
-          <div className="about-line mb-4 h-px w-16 bg-amber-400" />
+          <div
+            className="about-line mb-4 h-px w-16"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
           <h2
-            className="about-text text-5xl font-bold text-white md:text-6xl"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="about-text text-5xl font-bold md:text-6xl"
+            style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
           >
             {t.title}
           </h2>
         </div>
 
+        {/* Grid */}
         <div className="grid gap-16 md:grid-cols-2">
           <div className="flex flex-col gap-5">
-            <p className="about-text text-lg leading-relaxed text-neutral-400">{t.bio1}</p>
-            <p className="about-text text-lg leading-relaxed text-neutral-400">{t.bio2}</p>
+            <p className="about-text text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {t.bio1}
+            </p>
+            <p className="about-text text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {t.bio2}
+            </p>
           </div>
 
           <div>
-            <p className="about-text mb-6 text-sm uppercase tracking-widest text-neutral-500">{t.skills}</p>
+            <p
+              className="about-text mb-6 text-sm uppercase tracking-widest"
+              style={{ color: "var(--text-subtle)" }}
+            >
+              {t.skills}
+            </p>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="skill-tag rounded-full border border-neutral-800 bg-neutral-950 px-4 py-2 text-sm text-neutral-300 transition-colors hover:border-amber-400/50 hover:text-amber-400"
+                  className="skill-tag rounded-full border px-4 py-2 text-sm transition-colors duration-200"
+                  style={{
+                    borderColor: "var(--border)",
+                    backgroundColor: "var(--bg-card)",
+                    color: "var(--text-muted)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "var(--border-hover)";
+                    e.currentTarget.style.color = "var(--accent)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.color = "var(--text-muted)";
+                  }}
                 >
                   {skill}
                 </span>
