@@ -99,18 +99,17 @@ export default function Hero() {
           ref={nameRef}
           className="font-bold leading-tight tracking-tight"
           style={{
-            fontFamily: "'Playfair Display', serif",
-            color: "var(--text-primary)",
+            color: "var(--accent)",
             opacity: 0,
           }}
         >
-          Seu<span style={{ color: "var(--accent)" }}>Nome</span>
+          João Maganin
         </h1>
 
         <p
           ref={subRef}
           className="max-w-xl text-lg font-light leading-relaxed"
-          style={{ color: "var(--text-muted)", opacity: 0 }}
+          style={{ color: "var(--text-primary)", opacity: 0 }}
         >
           {t.subtitle}
         </p>

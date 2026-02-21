@@ -3,13 +3,14 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "../lib/gsap";
 import { useLang } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
-import { translations } from "../lib/translations";
+import { translations, NavKey } from "../lib/translations";
 import { Sun, Moon } from "lucide-react";
 
-const NAV_KEYS = ["home", "about", "projects", "contact"] as const;
-const NAV_HREFS: Record<string, string> = {
+const NAV_KEYS: NavKey[] = ["home", "about", "experience", "projects", "contact"];
+const NAV_HREFS: Record<NavKey, string> = {
   home: "#hero",
   about: "#about",
+  experience: "#experience",
   projects: "#projects",
   contact: "#contact",
 };
@@ -55,22 +56,18 @@ export default function Navbar() {
       <a
         href="#hero"
         className="text-xl font-semibold tracking-tight transition-colors"
-        style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
+        style={{ color: "var(--accent)" }}
       >
-        Seu<span style={{ color: "var(--accent)" }}>Nome</span>
+        Maganin
       </a>
 
-      <ul className="hidden list-none items-center gap-8 md:flex">
+      <ul className="hidden list-none items-center gap-6 md:flex">
         {NAV_KEYS.map((key) => (
           <li key={key}>
             <a
               href={NAV_HREFS[key]}
               className="relative text-[0.72rem] font-medium uppercase tracking-widest transition-colors after:absolute after:-bottom-0.5 after:left-1/2 after:right-1/2 after:h-px after:transition-all after:duration-300 hover:after:left-0 hover:after:right-0"
-              style={{
-                color: "var(--text-muted)",
-                // @ts-ignore
-                "--tw-after-bg": "var(--accent)",
-              }}
+              style={{ color: "var(--text-muted)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
             >
@@ -81,7 +78,6 @@ export default function Navbar() {
       </ul>
 
       <div className="flex items-center gap-2">
-        {/* Language toggle */}
         <div
           className="flex items-center gap-0.5 rounded-full border p-1"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)" }}
@@ -101,16 +97,11 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Theme toggle */}
         <button
           onClick={toggleTheme}
           aria-label="Alternar tema"
           className="relative flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-200"
-          style={{
-            borderColor: "var(--border)",
-            backgroundColor: "var(--bg-card)",
-            color: "var(--text-muted)",
-          }}
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)" }}
         >
           <Sun
             size={15}

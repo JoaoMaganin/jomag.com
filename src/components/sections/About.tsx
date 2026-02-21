@@ -51,7 +51,7 @@ export default function About() {
           />
           <h2
             className="about-text text-5xl font-bold md:text-6xl"
-            style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
+            style={{ color: "var(--text-primary)" }}
           >
             {t.title}
           </h2>
