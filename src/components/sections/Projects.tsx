@@ -169,7 +169,7 @@ export default function Projects() {
             <button
               onClick={() => navigate(-1)}
               className="absolute left-0 top-1/3 z-20 flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)" }}
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)", cursor: "pointer" }}
             >
               <ChevronLeft size={18} />
             </button>
@@ -223,7 +223,7 @@ export default function Projects() {
             <button
               onClick={() => navigate(1)}
               className="absolute right-0 top-1/3 z-20 flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)" }}
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)", cursor: "pointer" }}
             >
               <ChevronRight size={18} />
             </button>
