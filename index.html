@@ -1,10 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jomag.com</title>
+    <title>Portfólio</title>
+    <style>
+      /* Scroll snap — definido aqui para não ser sobrescrito pelo Tailwind */
+      html {
+        height: 100%;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      #root {
+        height: 100%;
+      }
+      .section {
+        height: 100dvh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
