@@ -39,6 +39,9 @@ export default function Contact() {
   const { lang } = useLang();
   const t = translations[lang].contact;
 
+  // Quebra a tagline em palavras para animar uma a uma
+  const words = t.tagline.split(" ");
+
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -53,12 +56,40 @@ export default function Contact() {
       tl.fromTo(".contact-line", { scaleX: 0 }, { scaleX: 1, transformOrigin: "left", duration: 0.7 })
         .fromTo(".contact-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
         .fromTo(".contact-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        .fromTo(".contact-tagline", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        .fromTo(".contact-link", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.12 }, "-=0.3")
+        // Palavras da tagline uma a uma
+        .fromTo(
+          ".contact-word",
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.35, stagger: 0.06 },
+          "-=0.2"
+        )
+        .fromTo(".contact-link", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.12 }, "-=0.1")
         .fromTo(".contact-footer", { opacity: 0 }, { opacity: 1, duration: 0.6 }, "-=0.1");
     },
     { scope: sectionRef }
   );
+
+  const handleLinkEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = e.currentTarget;
+    gsap.to(el, {
+      x: 6,
+      boxShadow: "0 0 24px 4px var(--accent-glow)",
+      borderColor: "var(--border-hover)",
+      duration: 0.25,
+      ease: "power2.out",
+    });
+  };
+
+  const handleLinkLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = e.currentTarget;
+    gsap.to(el, {
+      x: 0,
+      boxShadow: "0 0 0px 0px transparent",
+      borderColor: "var(--border)",
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
 
   return (
     <section
@@ -67,10 +98,29 @@ export default function Contact() {
       className="section relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      {/* Brilho */}
+      {/* Fundo único: grade diagonal de linhas finas */}
       <div
-        className="pointer-events-none absolute left-1/2 bottom-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full blur-[120px]"
-        style={{ backgroundColor: "var(--accent-glow)" }}
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 40px,
+              var(--border) 40px,
+              var(--border) 41px
+            )
+          `,
+          opacity: 0.15,
+        }}
+      />
+
+      {/* Gradiente radial cobrindo o centro para não competir com o conteúdo */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 70% 70% at 50% 50%, var(--bg-primary) 40%, transparent 100%)",
+        }}
       />
 
       <div className="relative z-10 mx-auto w-full max-w-2xl px-6 md:px-14">
@@ -92,11 +142,18 @@ export default function Contact() {
         >
           {t.subtitle}
         </h3>
-        <p
-          className="contact-tagline mb-14 max-w-md text-base leading-relaxed"
-          style={{ color: "var(--text-muted)" }}
-        >
-          {t.tagline}
+
+        {/* Tagline — palavra por palavra */}
+        <p className="mb-14 max-w-md text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+          {words.map((word, i) => (
+            <span
+              key={i}
+              className="contact-word inline-block"
+              style={{ opacity: 0, marginRight: "0.3em" }}
+            >
+              {word}
+            </span>
+          ))}
         </p>
 
         {/* Links */}
@@ -107,16 +164,10 @@ export default function Contact() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-link group flex items-center gap-4 rounded-xl border p-4 transition-all duration-200"
+              className="contact-link group flex items-center gap-4 rounded-xl border p-4"
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--border-hover)";
-                e.currentTarget.style.transform = "translateX(6px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border)";
-                e.currentTarget.style.transform = "translateX(0)";
-              }}
+              onMouseEnter={handleLinkEnter}
+              onMouseLeave={handleLinkLeave}
             >
               {/* Ícone */}
               <div
@@ -131,7 +182,7 @@ export default function Contact() {
                 {link.label}
               </span>
 
-              {/* Seta ou ícone de download */}
+              {/* Seta */}
               {link.type === "cv" ? (
                 <svg
                   className="ml-auto transition-transform duration-200 group-hover:translate-y-0.5"
@@ -176,9 +227,7 @@ export default function Contact() {
             </span>
           ))}
           <span style={{ color: "var(--border)" }}>·</span>
-          <span className="text-xs" style={{ color: "var(--text-subtle)" }}>
-            © {YEAR}
-          </span>
+          <span className="text-xs" style={{ color: "var(--text-subtle)" }}>© {YEAR}</span>
         </div>
       </div>
     </section>

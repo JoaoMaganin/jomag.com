@@ -152,7 +152,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       links: [
         { label: "GitHub", href: "https://github.com/seuusuario", type: "github" },
         { label: "LinkedIn", href: "https://linkedin.com/in/seuusuario", type: "linkedin" },
-        { label: "seuemail@email.com", href: "mailto:seuemail@email.com", type: "email" },
+        { label: "joaovitormontemor138@email.com", href: "mailto:joaovitormontemor138@email.com", type: "email" },
         { label: "Baixar currículo", href: "/cv-pt.pdf", type: "cv" },
       ],
       footer: "Feito com React, GSAP e café ☕",
@@ -275,7 +275,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       links: [
         { label: "GitHub", href: "https://github.com/seuusuario", type: "github" },
         { label: "LinkedIn", href: "https://linkedin.com/in/seuusuario", type: "linkedin" },
-        { label: "seuemail@email.com", href: "mailto:seuemail@email.com", type: "email" },
+        { label: "joaovitormontemor138@email.com", href: "mailto:joaovitormontemor138@email.com", type: "email" },
         { label: "Download resume", href: "/cv-en.pdf", type: "cv" },
       ],
       footer: "Built with React, GSAP and coffee ☕",
