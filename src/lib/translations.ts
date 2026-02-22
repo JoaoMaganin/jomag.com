@@ -25,6 +25,13 @@ export type Translation = {
   about: { title: string; bio1: string; bio2: string; skills: string };
   experience: { title: string; items: ExperienceItem[] };
   projects: { title: string; items: ProjectItem[] };
+  contact: {
+    title: string;
+    subtitle: string;
+    tagline: string;
+    links: { label: string; href: string; type: "github" | "linkedin" | "email" | "cv" }[];
+    footer: string;
+  };
 };
 
 export const translations: Record<"pt" | "en", Translation> = {
@@ -102,7 +109,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Um design system completo construído do zero para atender múltiplos produtos. Inclui tokens de design, componentes acessíveis e documentação interativa no Storybook.",
           tags: ["React", "TypeScript", "Storybook", "Tailwind"],
           image: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-          link: "https://google.com",
+          link: "https://github.com",
         },
         {
           title: "Portfolio v2",
@@ -110,7 +117,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Este próprio portfólio! Construído com Vite + React, GSAP para animações complexas e um sistema de temas e idiomas totalmente customizado.",
           tags: ["Vite", "React", "GSAP", "Tailwind"],
           image: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2d1500 100%)",
-          link: "https://facebook.com",
+          link: "https://github.com",
         },
         {
           title: "E-commerce UI",
@@ -118,7 +125,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Redesign completo da experiência de compra de um e-commerce, com foco em conversão e performance. Redução de 30% no tempo de checkout.",
           tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
           image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
-          link: "https://instagram.com",
+          link: "https://github.com",
         },
         {
           title: "Dashboard Analytics",
@@ -126,7 +133,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Dashboard para visualização de métricas de negócio com atualização em tempo real via WebSocket, filtros avançados e exportação de relatórios.",
           tags: ["React", "D3.js", "WebSocket", "Node.js"],
           image: "linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a3352 100%)",
-          link: "https://youtube.com",
+          link: "https://github.com",
         },
         {
           title: "App Mobile",
@@ -134,9 +141,21 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "App de gerenciamento de tarefas com suporte offline, sincronização em background e notificações push. Disponível para iOS e Android.",
           tags: ["React Native", "Expo", "SQLite", "Redux"],
           image: "linear-gradient(135deg, #1a0a1e 0%, #2d1040 50%, #1a0a1e 100%)",
-          link: "https://registro.br",
+          link: "https://github.com",
         },
       ],
+    },
+    contact: {
+      title: "Contato",
+      subtitle: "Vamos trabalhar juntos?",
+      tagline: "Estou disponível para projetos freelance, oportunidades full-time ou só para trocar uma ideia.",
+      links: [
+        { label: "GitHub", href: "https://github.com/seuusuario", type: "github" },
+        { label: "LinkedIn", href: "https://linkedin.com/in/seuusuario", type: "linkedin" },
+        { label: "seuemail@email.com", href: "mailto:seuemail@email.com", type: "email" },
+        { label: "Baixar currículo", href: "/cv-pt.pdf", type: "cv" },
+      ],
+      footer: "Feito com React, GSAP e café ☕",
     },
   },
   en: {
@@ -248,6 +267,18 @@ export const translations: Record<"pt" | "en", Translation> = {
           link: "https://github.com",
         },
       ],
+    },
+    contact: {
+      title: "Contact",
+      subtitle: "Let's work together?",
+      tagline: "Available for freelance projects, full-time opportunities, or just to have a chat.",
+      links: [
+        { label: "GitHub", href: "https://github.com/seuusuario", type: "github" },
+        { label: "LinkedIn", href: "https://linkedin.com/in/seuusuario", type: "linkedin" },
+        { label: "seuemail@email.com", href: "mailto:seuemail@email.com", type: "email" },
+        { label: "Download resume", href: "/cv-en.pdf", type: "cv" },
+      ],
+      footer: "Built with React, GSAP and coffee ☕",
     },
   },
 };
