@@ -3,12 +3,15 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations } from "../../lib/translations";
+import { TECHS } from "../../lib/constants";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
-  const subRef = useRef<HTMLParagraphElement>(null);
+  const subRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const rotatorRef = useRef<HTMLSpanElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
@@ -32,9 +35,37 @@ export default function Hero() {
         .to(nameRef.current, { fontSize: finalSize, duration: 0.9, ease: "power3.inOut" })
         .to(overlayRef.current, { opacity: 0, duration: 0.5, ease: "power2.inOut", pointerEvents: "none" }, "<0.5")
         .fromTo(subRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.1")
+        .fromTo(subtitleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
         .fromTo(indicatorRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, "-=0.3");
 
-      // ── Animação do fundo do Hero
+      // ── Word Rotator ───────────────────────────────────────────────────────
+      let currentIndex = Math.floor(Math.random() * TECHS.length);
+
+      const rotateWord = () => {
+        const el = rotatorRef.current;
+        if (!el) return;
+        gsap.to(el, {
+          y: -16,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => {
+            currentIndex = (currentIndex + 1) % TECHS.length;
+            el.textContent = TECHS[currentIndex];
+            gsap.fromTo(el,
+              { y: 16, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }
+            );
+          },
+        });
+      };
+
+      const delay = setTimeout(() => {
+        const interval = setInterval(rotateWord, 2000);
+        return () => clearInterval(interval);
+      }, 2800);
+
+      // ── Animação do fundo do Hero ──────────────────────────────────────────
       gsap.to(orb1Ref.current, {
         scale: 1.3,
         opacity: 0.7,
@@ -65,6 +96,8 @@ export default function Hero() {
         repeat: -1,
         delay: 1.5,
       });
+
+      return () => clearTimeout(delay);
     },
     { scope: sectionRef }
   );
@@ -122,8 +155,26 @@ export default function Hero() {
         >
           João Maganin
         </h1>
-        <p
+
+        {/* Word rotator */}
+        <div
           ref={subRef}
+          className="flex items-center gap-2 overflow-hidden text-base font-medium"
+          style={{ color: "var(--text-muted)", opacity: 0 }}
+        >
+          <span>{lang === "pt" ? "Desenvolvedor" : "Developer"}</span>
+          <span style={{ color: "var(--border)" }}>/</span>
+          <span
+            ref={rotatorRef}
+            className="inline-block min-w-[7rem] text-left"
+            style={{ color: "var(--accent)" }}
+          >
+            {TECHS[Math.floor(Math.random() * TECHS.length)]}
+          </span>
+        </div>
+
+        <p
+          ref={subtitleRef}
           className="max-w-xl text-lg font-light leading-relaxed"
           style={{ color: "var(--text-primary)", opacity: 0 }}
         >

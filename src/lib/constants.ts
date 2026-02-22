@@ -1,0 +1,1 @@
+export const TECHS = ["React", "Java", "TypeScript", "Python", "Node.js", "SpringBoot", "Django", "Nest.js", "GSAP", "Next.js", "SQL"];
