@@ -156,7 +156,7 @@ export default function Experience() {
                     className={`exp-content group w-full rounded-xl border p-6 text-left transition-all duration-200 md:w-[calc(50%-2rem)] ${
                       i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
                     }`}
-                    style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)" }}
+                    style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", cursor: "pointer" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = "var(--border-hover)";
                       e.currentTarget.style.transform = "translateY(-2px)";

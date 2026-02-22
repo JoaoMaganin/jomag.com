@@ -3,8 +3,8 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations } from "../../lib/translations";
+import { skills } from "../../lib/constants";
 
-const skills = ["React", "TypeScript", "GSAP", "Node.js", "Tailwind", "Figma"];
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
