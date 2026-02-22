@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>João Maganin</title>
+    <style>
+      html {
+        height: 100%;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      #root {
+        height: 100%;
+      }
+
+      /* Seções fullscreen — snappam normalmente */
+      .section {
+        height: 100dvh;
+        scroll-snap-align: start;
+        /* "normal" em vez de "always" — permite o scroll passar por seções sem snap */
+        scroll-snap-stop: normal;
+      }
+
+      /* Experience e outras seções longas — snappam no início mas não travam */
+      /* Âncora de fim de seção — ponto de snap ao subir */
+      .section-snap-bottom {
+        scroll-snap-align: end;
+        scroll-snap-stop: normal;
+        height: 0;
+      }
+
+      .section-free {
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

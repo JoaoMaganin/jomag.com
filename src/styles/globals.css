@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+@import "tailwindcss";
+
+/* ── Tema dark (padrão) ─────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111113;
+  --bg-card: #1a1a1c;
+  --bg-nav: rgba(10, 10, 10, 0.8);
+
+  --text-primary: #f0ede8;
+  --text-muted: #737373;
+  --text-subtle: #404040;
+
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
+  --accent-glow: rgba(245, 158, 11, 0.15);
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(245, 158, 11, 0.4);
+}
+
+/* ── Tema claro ───────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-primary: #f5f2ed;
+  --bg-secondary: #ede9e3;
+  --bg-card: #e8e4de;
+  --bg-nav: rgba(245, 242, 237, 0.8);
+
+  --text-primary: #1a1814;
+  --text-muted: #6b6560;
+  --text-subtle: #9e9890;
+
+  --accent: #b45309;
+  --accent-hover: #92400e;
+  --accent-glow: rgba(180, 83, 9, 0.15);
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(180, 83, 9, 0.4);
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Zain', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
