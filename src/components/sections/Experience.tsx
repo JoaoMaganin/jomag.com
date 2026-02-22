@@ -8,6 +8,7 @@ import ExperienceModal from "../modals/ExperienceModal";
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const dotsRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<ExperienceItem | null>(null);
 
   const { lang } = useLang();
@@ -15,6 +16,10 @@ export default function Experience() {
 
   useGSAP(
     () => {
+      // Linha termina no último item, não no fim da seção
+      const items = gsap.utils.toArray<HTMLElement>(".exp-item");
+      const lastItem = items[items.length - 1];
+
       gsap.fromTo(
         lineRef.current,
         { scaleY: 0 },
@@ -25,7 +30,8 @@ export default function Experience() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 60%",
-            end: "bottom 80%",
+            endTrigger: lastItem,
+            end: "bottom 60%",
             scrub: 1,
           },
         }
@@ -33,7 +39,7 @@ export default function Experience() {
 
       gsap.utils.toArray<HTMLElement>(".exp-item").forEach((item, i) => {
         const dot = item.querySelector(".exp-dot");
-        const content = item.querySelector(".exp-content");
+        const content = item.querySelector<HTMLElement>(".exp-content");
 
         gsap.timeline({
           scrollTrigger: {
@@ -48,7 +54,29 @@ export default function Experience() {
             { opacity: 0, x: i % 2 === 0 ? -30 : 30 },
             { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
             "-=0.2"
-          );
+          )
+          // Após entrada, inicia glow esfumaçado em loop separado
+          .add(() => {
+            gsap.fromTo(content,
+              { boxShadow: "0 0 8px 0px transparent" },
+              {
+                boxShadow: "0 0 28px 8px var(--accent-glow)",
+                duration: 1.8,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1,
+                delay: i * 0.5,
+              }
+            );
+          }, "+=0.3");
+      });
+
+      // Pontos deslizando em diagonal — loop infinito
+      gsap.to(dotsRef.current, {
+        backgroundPosition: "280px 280px",
+        duration: 40,
+        ease: "none",
+        repeat: -1,
       });
 
       return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -61,12 +89,26 @@ export default function Experience() {
       <section
         id="experience"
         ref={sectionRef}
-        className="section-free relative min-h-screen pt-32 pb-48 flex flex-col transition-colors duration-300"
-        style={{ backgroundColor: "var(--bg-primary)" }}
+        className="section-free relative pt-32 flex flex-col transition-colors duration-300"
+        style={{ backgroundColor: "var(--bg-secondary)" }}
       >
+        {/* Grade de pontos */}
         <div
-          className="pointer-events-none absolute left-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-[100px]"
-          style={{ backgroundColor: "var(--accent-glow)" }}
+          ref={dotsRef}
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, var(--text-primary) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.18,
+          }}
+        />
+
+        {/* Gradiente diagonal escurecendo de cima para baixo */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: "linear-gradient(160deg, transparent 40%, var(--bg-primary) 100%)",
+          }}
         />
 
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 md:px-14">
@@ -75,7 +117,7 @@ export default function Experience() {
             <div className="mb-4 h-px w-16" style={{ backgroundColor: "var(--accent)" }} />
             <h2
               className="text-5xl font-bold md:text-6xl"
-              style={{ color: "var(--text-primary)" }}
+              style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
             >
               {t.title}
             </h2>
@@ -114,7 +156,7 @@ export default function Experience() {
                     className={`exp-content group w-full rounded-xl border p-6 text-left transition-all duration-200 md:w-[calc(50%-2rem)] ${
                       i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
                     }`}
-                    style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", cursor: "pointer" }}
+                    style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = "var(--border-hover)";
                       e.currentTarget.style.transform = "translateY(-2px)";
@@ -165,8 +207,11 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Âncora de snap ao subir — posicionada no fim do padding */}
-        
+        {/* Espaço para o último item respirar antes do snap */}
+        <div style={{ height: "30vh" }} />
+
+        {/* Âncora de snap ao subir — fica após o espaçamento */}
+        <div className="section-snap-bottom" style={{ height: 0 }} />
       </section>
 
       {/* Modal */}
