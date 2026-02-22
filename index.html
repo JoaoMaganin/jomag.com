@@ -1,1 +1,49 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/jomag.com/coder.png"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/jomag.com/logo192.png"/><link rel="manifest" href="/jomag.com/manifest.json"/><title>jomag</title><script defer="defer" src="/jomag.com/static/js/main.55dec7b6.js"></script><link href="/jomag.com/static/css/main.65d35ba4.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>João Maganin</title>
+    <style>
+      html {
+        height: 100%;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      #root {
+        height: 100%;
+      }
+
+      /* Seções fullscreen — snappam normalmente */
+      .section {
+        height: 100dvh;
+        scroll-snap-align: start;
+        /* "normal" em vez de "always" — permite o scroll passar por seções sem snap */
+        scroll-snap-stop: normal;
+      }
+
+      /* Experience e outras seções longas — snappam no início mas não travam */
+      /* Âncora de fim de seção — ponto de snap ao subir */
+      .section-snap-bottom {
+        scroll-snap-align: end;
+        scroll-snap-stop: normal;
+        height: 0;
+      }
+
+      .section-free {
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+      }
+    </style>
+    <script type="module" crossorigin src="/jomag.com/assets/index-BoeQ20ta.js"></script>
+    <link rel="stylesheet" crossorigin href="/jomag.com/assets/index-BYEMK_wH.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
