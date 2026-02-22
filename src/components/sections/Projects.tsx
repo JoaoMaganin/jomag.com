@@ -42,9 +42,36 @@ function ProjectLinkButton({ href }: { href: string }) {
   );
 }
 
+// Título animado do projeto ativo
+function ProjectTitle({ title }: { title: string }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0, y: 12, filter: "blur(6px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }
+    );
+  });
+
+  return (
+    <h3
+      ref={ref}
+      className="text-xl font-bold tracking-tight"
+      style={{
+        color: "var(--text-primary)",
+        opacity: 0,
+      }}
+    >
+      {title}
+    </h3>
+  );
+}
+
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [selected, setSelected] = useState<ProjectItem | null>(null);
   const isAnimating = useRef(false);
@@ -67,39 +94,34 @@ export default function Projects() {
     { scope: sectionRef }
   );
 
-  // Setas do teclado — ativo apenas quando a seção está visível
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const isVisible = rect.top >= -rect.height / 2 && rect.top <= rect.height / 2;
-      if (!isVisible) return;
-      if (e.key === "ArrowRight") navigate(1);
-      if (e.key === "ArrowLeft") navigate(-1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
-
-  // Leque: central em pé, laterais inclinados e mais baixos
   const getCardProps = (index: number, currentActive: number) => {
     let diff = index - currentActive;
     if (diff > total / 2) diff -= total;
     if (diff < -total / 2) diff += total;
 
-    if (diff === 0) {
-      return { x: 0, y: 0, scale: 1, rotateZ: 0, opacity: 1, zIndex: 10 };
-    }
-    if (diff === 1 || diff === -(total - 1)) {
-      // Direita: inclinado no sentido horário, desce
-      return { x: 310, y: 55, scale: 0.85, rotateZ: 22, opacity: 0.55, zIndex: 5 };
-    }
-    if (diff === -1 || diff === (total - 1)) {
-      // Esquerda: inclinado no sentido anti-horário, desce
-      return { x: -310, y: 55, scale: 0.85, rotateZ: -22, opacity: 0.55, zIndex: 5 };
-    }
-    // Fora de vista
+    if (diff === 0) return { x: 0, y: 0, scale: 1, rotateZ: 0, opacity: 1, zIndex: 10 };
+    if (diff === 1 || diff === -(total - 1)) return { x: 310, y: 55, scale: 0.85, rotateZ: 22, opacity: 0.55, zIndex: 5 };
+    if (diff === -1 || diff === (total - 1)) return { x: -310, y: 55, scale: 0.85, rotateZ: -22, opacity: 0.55, zIndex: 5 };
     return { x: diff > 0 ? 680 : -680, y: 100, scale: 0.65, rotateZ: diff > 0 ? 45 : -45, opacity: 0, zIndex: 1 };
+  };
+
+  // Anima spotlight para apagar e acender no centro
+  const animateSpotlight = (dir: 1 | -1) => {
+    const tl = gsap.timeline();
+    // Apaga
+    tl.to(spotlightRef.current, {
+      opacity: 0,
+      scale: 0.6,
+      duration: 0.25,
+      ease: "power2.in",
+    })
+    // Reacende no centro
+    .to(spotlightRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      ease: "power3.out",
+    });
   };
 
   const applyCardProps = (cards: NodeListOf<HTMLElement>, targetActive: number, animate: boolean) => {
@@ -124,6 +146,7 @@ export default function Projects() {
     const cards = carouselRef.current?.querySelectorAll<HTMLElement>(".proj-card");
     if (!cards) return;
     applyCardProps(cards, next, true);
+    animateSpotlight(dir);
     setActive(next);
   };
 
@@ -136,6 +159,20 @@ export default function Projects() {
     { scope: sectionRef, dependencies: [] }
   );
 
+  // Setas do teclado
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isVisible = rect.top >= -rect.height / 2 && rect.top <= rect.height / 2;
+      if (!isVisible) return;
+      if (e.key === "ArrowRight") navigate(1);
+      if (e.key === "ArrowLeft") navigate(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [active]);
+
   return (
     <>
       <section
@@ -144,10 +181,21 @@ export default function Projects() {
         className="section relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300"
         style={{ backgroundColor: "var(--bg-secondary)" }}
       >
-        {/* Brilho */}
+        {/* ── Spotlight: holofote de frente — glow radial centralizado ── */}
         <div
-          className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]"
-          style={{ backgroundColor: "var(--accent-glow)" }}
+          ref={spotlightRef}
+          className="pointer-events-none absolute z-0"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "520px",
+            height: "520px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)",
+            filter: "blur(20px)",
+            opacity: 1,
+          }}
         />
 
         <div className="relative z-10 flex w-full flex-col items-center gap-8 px-6">
@@ -164,21 +212,15 @@ export default function Projects() {
 
           {/* Carrossel */}
           <div className="relative flex w-full max-w-5xl items-start justify-center">
-
-            {/* Botão anterior */}
             <button
               onClick={() => navigate(-1)}
               className="absolute left-0 top-1/3 z-20 flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)", cursor: "pointer" }}
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)" }}
             >
               <ChevronLeft size={18} />
             </button>
 
-            {/* Stage */}
-            <div
-              ref={carouselRef}
-              className="relative h-96 w-full"
-            >
+            <div ref={carouselRef} className="relative h-96 w-full">
               {t.items.map((item, i) => (
                 <div
                   key={i}
@@ -191,10 +233,7 @@ export default function Projects() {
                   }}
                   onClick={() => active === i && setSelected(item)}
                 >
-                  {/* Imagem */}
                   <div className="h-36 w-full" style={{ background: item.image }} />
-
-                  {/* Info */}
                   <div className="p-4">
                     <h3 className="mb-1 text-base font-semibold" style={{ color: "var(--text-primary)" }}>
                       {item.title}
@@ -204,7 +243,6 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* Overlay hover no central */}
                   {active === i && (
                     <div
                       className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 hover:opacity-100 rounded-2xl"
@@ -219,17 +257,16 @@ export default function Projects() {
               ))}
             </div>
 
-            {/* Botão próximo */}
             <button
               onClick={() => navigate(1)}
               className="absolute right-0 top-1/3 z-20 flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)", cursor: "pointer" }}
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", color: "var(--text-muted)" }}
             >
               <ChevronRight size={18} />
             </button>
           </div>
 
-          {/* Botão de link — animado ao trocar de projeto */}
+          {/* Botão link */}
           <div className="flex items-center justify-center" style={{ minHeight: "2.75rem", marginTop: "-0.5rem" }}>
             {t.items[active].link && (
               <ProjectLinkButton key={active} href={t.items[active].link!} />
