@@ -233,7 +233,7 @@ export default function Projects() {
                   }}
                   onClick={() => active === i && setSelected(item)}
                 >
-                  <div className="h-36 w-full" style={{ background: item.image }} />
+                  <div className="h-36 w-full" style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }} />
                   <div className="p-4">
                     <h3 className="mb-1 text-base font-semibold" style={{ color: "var(--text-primary)" }}>
                       {item.title}
@@ -264,6 +264,11 @@ export default function Projects() {
             >
               <ChevronRight size={18} />
             </button>
+          </div>
+
+          {/* Nome do projeto ativo em destaque */}
+          <div className="flex flex-col items-center" style={{ marginTop: "-2.5rem" }}>
+            <ProjectTitle key={active} title={t.items[active].title} />
           </div>
 
           {/* Botão link */}

@@ -45,7 +45,7 @@ export default function ProjectModal({ item, onClose }: Props) {
         {/* Imagem de capa */}
         <div
           className="h-52 w-full rounded-t-2xl"
-          style={{ background: item.image }}
+          style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }}
         />
 
         <div className="p-8">
@@ -53,7 +53,7 @@ export default function ProjectModal({ item, onClose }: Props) {
           <button
             onClick={handleClose}
             className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full border transition-colors"
-            style={{ borderColor: "var(--border)", color: "var(--text-muted)", backgroundColor: "var(--bg-card)" }}
+            style={{ borderColor: "var(--border)", color: "var(--text-muted)", backgroundColor: "var(--bg-card)", cursor: "pointer" }}
           >
             <X size={14} />
           </button>

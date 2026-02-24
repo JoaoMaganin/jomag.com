@@ -95,7 +95,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Gerenciador de tasks(Trello-like)",
           longDescription: "Solução full-stack para gestão de fluxos de trabalho. A aplicação destaca-se pela separação de responsabilidades em microsserviços desenvolvidos em Nest, permitindo que cada módulo evolua de forma independente. Implementa autenticação segura e comunicação entre serviços, unindo o poder de processamento do ecossistema Java à agilidade do front-end em React. Também possui serviço de mensageria com RabbitMQ.",
           tags: ["Nest.js", "TypeScript", "React", "Microserviços", "API Rest", "RabbitMQ", "PostgreSQL"],
-          image: "syncflow.gif",
+          image: "/jomag.com/syncflow.gif",
           link: "https://github.com/JoaoMaganin/syncflow",
         },
         {
@@ -103,7 +103,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Sistema de gestão interno",
           longDescription: "Sistema focado na oficina automotiva Maganin Automecânica, visando entregar uma gestão integrada de estoque, finanças, vendas. Até o momento, somente a primeira versão contendo o módulo de estoque foi entregue. Criado com Spring Boot no back-end e Next.js no front-end para garantir performance e SEO.",
           tags: ["Spring Boot", "Next.js", "SQLite", "API Rest", "Backup"],
-          image: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2d1500 100%)",
+          image: "/jomag.com/project1.png",
           link: "https://github.com/JoaoMaganin/ERP-Maganin-Automecanica",
         },
         {
@@ -111,7 +111,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Gerenciamento de recursos humanos",
           longDescription: "Sistema de gestão de recursos humanos desenvolvido para otimizar o controle de registros de colaboradores. A solução utiliza Spring Boot para uma API REST robusta e React para uma interface administrativa intuitiva, implementando operações CRUD completas com foco em integridade de dados e eficiência operacional.",
           tags: ["Java", "Spring Boot", "React", "PostgreSQL", "API Rest"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          image: "/jomag.com/project2.jpg",
           link: "https://github.com/JoaoMaganin/employee_management_system",
         },
         {
@@ -119,7 +119,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Scrapping de produtos na Amazon",
           longDescription: "Desenvolvido como tech challenge este projeto é um Web Scraping focado na simplicidade e eficiência para extrair listagens de produtos da Amazon. A ferramenta automatiza a coleta de dados que seriam buscados manualmente, refletindo competências em lógica de programação e análise de estruturas de páginas web para conversão em formatos organizados.",
           tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          image: "/jomag.com/amazon.png",
           link: "https://github.com/JoaoMaganin/trainee-amazon-list/tree/master",
         },
         {
@@ -127,7 +127,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "API Financeira",
           longDescription: "Construção de uma API de back-end inspirada em sistemas bancários reais, focada em processamento transacional e segurança. O projeto utiliza Java com Spring Boot para implementar uma arquitetura resiliente, demonstrando domínio em persistência de dados, tratamento de exceções e padrões RESTful para operações financeiras.",
           tags: ["Java", "SpringBoot", "Swagger", "Docker", "Testes automatizados"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          image: "/jomag.com/itau.png",
           link: "https://github.com/JoaoMaganin/itau-backend",
         }
       ]
@@ -205,7 +205,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Task manager (Trello-like)",
           longDescription: "Full-stack solution for workflow management. The application stands out for its separation of responsibilities into microservices developed in Nest, allowing each module to evolve independently. It implements secure authentication and communication between services, combining the processing power of the Java ecosystem with the agility of the React front-end. It also features a messaging service with RabbitMQ.",
           tags: ["Nest.js", "TypeScript", "React", "Microsservices", "API Rest", "RabbitMQ", "PostgreSQL"],
-          image: "syncflow.gif",
+          image: "/jomag.com/syncflow.gif",
           link: "https://github.com/JoaoMaganin/syncflow",
         },
         {
@@ -213,7 +213,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Internal management system",
           longDescription: "This system is focused on the Maganin Automecânica automotive workshop, aiming to deliver integrated management of inventory, finances, and sales. To date, only the first version, containing the inventory module, has been released. It was built using Spring Boot on the back-end and Next.js on the front-end to ensure performance and SEO.",
           tags: ["Spring Boot", "Next.js", "SQLite", "API Rest", "Backup"],
-          image: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2d1500 100%)",
+          image: "/jomag.com/project1.png",
           link: "https://github.com/JoaoMaganin/ERP-Maganin-Automecanica",
         },
         {
@@ -221,7 +221,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Human resource management",
           longDescription: "Human resources management system developed to optimize the control of employee records. The solution uses Spring Boot for a robust REST API and React for an intuitive administrative interface, implementing complete CRUD operations with a focus on data integrity and operational efficiency.",
           tags: ["Java", "Spring Boot", "React", "PostgreSQL", "API Rest"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          image: "/jomag.com/project2.jpg",
           link: "https://github.com/JoaoMaganin/employee_management_system",
         },
         {
@@ -229,15 +229,15 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Scrapping products on Amazon",
           longDescription: "Developed as a tech challenge, this project is a web scraping tool focused on simplicity and efficiency for extracting product listings from Amazon. The tool automates the collection of data that would otherwise be done manually, demonstrating expertise in programming logic and analysis of web page structures for conversion into organized formats.",
           tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
-          link: "https://github.com/JoaoMaganin/trainee-amazon-list/tree/master",
+          image: "/jomag.com/amazon.png",
+          link: "https://github.com/JoaoMaganin/trainee-amazon-list",
         },
         {
           title: "Itaú Tech Challenge",
           description: "Financial API",
           longDescription: "Building a back-end API inspired by real banking systems, focused on transactional processing and security. The project uses Java with Spring Boot to implement a resilient architecture, demonstrating expertise in data persistence, exception handling, and RESTful patterns for financial operations.",
           tags: ["Java", "SpringBoot", "Swagger", "Docker", "Testes automatizados"],
-          image: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%)",
+          image: "/jomag.com/itau.png",
           link: "https://github.com/JoaoMaganin/itau-backend",
         }
       ]
