@@ -1,49 +1,58 @@
 <!doctype html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>João Maganin</title>
-    <style>
-      html {
-        height: 100%;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-      }
-      body {
-        height: 100%;
-        margin: 0;
-      }
-      #root {
-        height: 100%;
-      }
 
-      /* Seções fullscreen — snappam normalmente */
-      .section {
-        height: 100dvh;
-        scroll-snap-align: start;
-        /* "normal" em vez de "always" — permite o scroll passar por seções sem snap */
-        scroll-snap-stop: normal;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/jomag.com/icon.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" href="/jomag.com/icon.png">
+  <title>João Maganin</title>
+  <style>
+    html {
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
 
-      /* Experience e outras seções longas — snappam no início mas não travam */
-      /* Âncora de fim de seção — ponto de snap ao subir */
-      .section-snap-bottom {
-        scroll-snap-align: end;
-        scroll-snap-stop: normal;
-        height: 0;
-      }
+    body {
+      height: 100%;
+      margin: 0;
+    }
 
-      .section-free {
-        scroll-snap-align: start;
-        scroll-snap-stop: normal;
-      }
-    </style>
-    <script type="module" crossorigin src="/jomag.com/assets/index-BoeQ20ta.js"></script>
-    <link rel="stylesheet" crossorigin href="/jomag.com/assets/index-BYEMK_wH.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    #root {
+      height: 100%;
+    }
+
+    /* Seções fullscreen — snappam normalmente */
+    .section {
+      height: 100dvh;
+      scroll-snap-align: start;
+      /* "normal" em vez de "always" — permite o scroll passar por seções sem snap */
+      scroll-snap-stop: normal;
+    }
+
+    /* Experience e outras seções longas — snappam no início mas não travam */
+    /* Âncora de fim de seção — ponto de snap ao subir */
+    .section-snap-bottom {
+      scroll-snap-align: end;
+      scroll-snap-stop: normal;
+      height: 0;
+    }
+
+    .section-free {
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+    }
+  </style>
+  <script type="module" crossorigin src="/jomag.com/assets/index-DHNC-AAm.js"></script>
+  <link rel="stylesheet" crossorigin href="/jomag.com/assets/index-BYEMK_wH.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
 </html>
