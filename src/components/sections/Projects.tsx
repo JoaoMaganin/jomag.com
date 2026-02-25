@@ -60,7 +60,6 @@ function ProjectTitle({ title }: { title: string }) {
       ref={ref}
       className="text-xl font-bold tracking-tight"
       style={{
-        fontFamily: "'Playfair Display', serif",
         color: "var(--text-primary)",
         opacity: 0,
       }}
@@ -208,7 +207,7 @@ export default function Projects() {
             <div className="mb-4 h-px w-16" style={{ backgroundColor: "var(--accent)" }} />
             <h2
               className="text-5xl font-bold md:text-6xl"
-              style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
+              style={{ color: "var(--text-primary)" }}
             >
               {t.title}
             </h2>
