@@ -182,7 +182,7 @@ export default function Experience() {
                       {item.description}
                     </p>
                     {/* Tags */}
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    {/* <div className="mt-4 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
@@ -192,7 +192,7 @@ export default function Experience() {
                           {tag}
                         </span>
                       ))}
-                    </div>
+                    </div> */}
                     {/* Hint */}
                     <span
                       className="mt-4 block text-xs font-medium uppercase tracking-widest opacity-0 transition-opacity duration-200 group-hover:opacity-100"

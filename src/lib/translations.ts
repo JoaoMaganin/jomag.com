@@ -164,7 +164,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       skills: "Technologies",
     },
     experience: {
-      title: "Experiência",
+      title: "Work Experience",
       items: [
         {
           period: "2025 — Presente",
@@ -198,7 +198,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       ],
     },
     projects: {
-      title: "Projetos",
+      title: "Projects",
       items: [
         {
           title: "SyncFlow",
