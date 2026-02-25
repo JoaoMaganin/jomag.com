@@ -13,7 +13,6 @@
     html {
       height: 100%;
       overflow-y: scroll;
-      scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
     }
 
@@ -26,25 +25,32 @@
       height: 100%;
     }
 
-    /* Seções fullscreen — snappam normalmente */
     .section {
-      height: 100dvh;
-      scroll-snap-align: start;
-      /* "normal" em vez de "always" — permite o scroll passar por seções sem snap */
-      scroll-snap-stop: normal;
+      min-height: 100dvh;
     }
 
-    /* Experience e outras seções longas — snappam no início mas não travam */
-    /* Âncora de fim de seção — ponto de snap ao subir */
-    .section-snap-bottom {
-      scroll-snap-align: end;
-      scroll-snap-stop: normal;
-      height: 0;
-    }
+    /* Scroll-snap apenas em desktop (768px+) */
+    @media (min-width: 768px) {
+      html {
+        scroll-snap-type: y mandatory;
+      }
 
-    .section-free {
-      scroll-snap-align: start;
-      scroll-snap-stop: normal;
+      .section {
+        height: 100dvh;
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+      }
+
+      .section-snap-bottom {
+        scroll-snap-align: end;
+        scroll-snap-stop: normal;
+        height: 0;
+      }
+
+      .section-free {
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+      }
     }
   </style>
 </head>
