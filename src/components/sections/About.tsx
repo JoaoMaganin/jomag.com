@@ -36,11 +36,6 @@ export default function About() {
       className="section relative flex flex-col items-center justify-center transition-colors duration-300"
       style={{ backgroundColor: "var(--bg-secondary)" }}
     >
-      {/* Brilho no canto */}
-      <div
-        className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] rounded-full blur-[100px]"
-        style={{ backgroundColor: "var(--accent-glow)" }}
-      />
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 md:px-14">
         {/* Header */}

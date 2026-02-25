@@ -4,6 +4,7 @@ import { gsap } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations } from "../../lib/translations";
 import { TECHS } from "../../lib/constants";
+import { useVisibilityPause } from "../../hooks/Usevisibilitypause";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -16,6 +17,8 @@ export default function Hero() {
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
+
+  useVisibilityPause(sectionRef);
 
   const { lang } = useLang();
   const t = translations[lang].hero;

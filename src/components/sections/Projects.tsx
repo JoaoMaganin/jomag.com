@@ -5,6 +5,7 @@ import { useLang } from "../../context/LanguageContext";
 import { translations, ProjectItem } from "../../lib/translations";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectModal from "../modals/ProjectModal";
+import { useVisibilityPause } from "../../hooks/Usevisibilitypause";
 
 // Botão animado — monta com fade+slide ao trocar de projeto
 function ProjectLinkButton({ href }: { href: string }) {
@@ -59,6 +60,7 @@ function ProjectTitle({ title }: { title: string }) {
       ref={ref}
       className="text-xl font-bold tracking-tight"
       style={{
+        fontFamily: "'Playfair Display', serif",
         color: "var(--text-primary)",
         opacity: 0,
       }}
@@ -75,6 +77,8 @@ export default function Projects() {
   const [active, setActive] = useState(0);
   const [selected, setSelected] = useState<ProjectItem | null>(null);
   const isAnimating = useRef(false);
+
+  useVisibilityPause(sectionRef);
 
   const { lang } = useLang();
   const t = translations[lang].projects;
@@ -204,7 +208,7 @@ export default function Projects() {
             <div className="mb-4 h-px w-16" style={{ backgroundColor: "var(--accent)" }} />
             <h2
               className="text-5xl font-bold md:text-6xl"
-              style={{ color: "var(--text-primary)" }}
+              style={{ fontFamily: "'Playfair Display', serif", color: "var(--text-primary)" }}
             >
               {t.title}
             </h2>
