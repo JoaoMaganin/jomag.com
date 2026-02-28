@@ -4,7 +4,7 @@ import { gsap } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations } from "../../lib/translations";
 import { TECHS } from "../../lib/constants";
-import { useVisibilityPause } from "../../hooks/Usevisibilitypause";
+import { useVisibilityPause } from "../../hooks/useVisibilityPause";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);

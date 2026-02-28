@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations, ExperienceItem } from "../../lib/translations";
 import ExperienceModal from "../modals/ExperienceModal";
-import { useVisibilityPause } from "../../hooks/Usevisibilitypause";
+import { useVisibilityPause } from "../../hooks/useVisibilityPause";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);

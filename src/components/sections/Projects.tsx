@@ -5,7 +5,7 @@ import { useLang } from "../../context/LanguageContext";
 import { translations, ProjectItem } from "../../lib/translations";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectModal from "../modals/ProjectModal";
-import { useVisibilityPause } from "../../hooks/Usevisibilitypause";
+import { useVisibilityPause } from "../../hooks/useVisibilityPause";
 
 // Botão animado — monta com fade+slide ao trocar de projeto
 function ProjectLinkButton({ href }: { href: string }) {
