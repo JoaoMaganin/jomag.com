@@ -1,4 +1,5 @@
-import { analytics } from "@/lib/Analytics";
+
+import { analytics } from "../lib/Analytics";
 import { useEffect, RefObject } from "react";
 
 /**
