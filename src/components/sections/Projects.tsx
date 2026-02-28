@@ -6,8 +6,8 @@ import { translations, ProjectItem } from "../../lib/translations";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectModal from "../modals/ProjectModal";
 import { useVisibilityPause } from "../../hooks/useVisibilityPause";
-import { useSectionTracking } from "@/hooks/Usesectiontracking";
-import { analytics } from "@/lib/Analytics";
+import { analytics } from "../../lib/analytics";
+import { useSectionTracking } from "../../hooks/useSectionTracking";
 
 
 // Botão animado — monta com fade+slide ao trocar de projeto

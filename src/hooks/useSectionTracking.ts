@@ -1,11 +1,6 @@
-
-import { analytics } from "../lib/Analytics";
+import { analytics } from "../lib/analytics";
 import { useEffect, RefObject } from "react";
 
-/**
- * Dispara um evento no GA4 quando a seção entra na viewport.
- * Só dispara uma vez por sessão para não inflar os dados.
- */
 export function useSectionTracking(ref: RefObject<HTMLElement | null>, sectionName: string) {
   useEffect(() => {
     const el = ref.current;
@@ -20,7 +15,7 @@ export function useSectionTracking(ref: RefObject<HTMLElement | null>, sectionNa
           analytics.viewSection(sectionName);
         }
       },
-      { threshold: 0.5 } // 50% visível para garantir que realmente visitou
+      { threshold: 0.5 }
     );
 
     observer.observe(el);
