@@ -2,7 +2,7 @@
 
 Este é o repositório do meu portfólio profissional, desenvolvido para consolidar minha trajetória como desenvolvedor Full Stack. O projeto une minha experiência prática em sistemas corporativos com arquiteturas modernas e escaláveis.
 
-Acesse no link: [https://joaomaganin.github.io/jomag.com](https://joaomaganin.github.io/jomag.com)
+Acesse no link: [https://joaomaganin.dev](https://joaomaganin.dev)
 
 ![Status do Build](https://github.com/JoaoMaganin/jomag.com/actions/workflows/workflow.yaml/badge.svg)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joaomontemor/)
