@@ -6,6 +6,9 @@ import { translations, ProjectItem } from "../../lib/translations";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectModal from "../modals/ProjectModal";
 import { useVisibilityPause } from "../../hooks/useVisibilityPause";
+import { useSectionTracking } from "../../hooks/useSectionTracking";
+import { analytics } from "../../lib/analytics";
+
 
 // Botão animado — monta com fade+slide ao trocar de projeto
 function ProjectLinkButton({ href }: { href: string }) {
@@ -78,6 +81,8 @@ export default function Projects() {
   const isAnimating = useRef(false);
 
   useVisibilityPause(sectionRef);
+  useSectionTracking(sectionRef, "projects");
+
 
   const { lang } = useLang();
   const t = translations[lang].projects;
@@ -118,13 +123,13 @@ export default function Projects() {
       duration: 0.25,
       ease: "power2.in",
     })
-    // Reacende no centro
-    .to(spotlightRef.current, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.5,
-      ease: "power3.out",
-    });
+      // Reacende no centro
+      .to(spotlightRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "power3.out",
+      });
   };
 
   const applyCardProps = (cards: NodeListOf<HTMLElement>, targetActive: number, animate: boolean) => {
@@ -151,6 +156,7 @@ export default function Projects() {
     applyCardProps(cards, next, true);
     animateSpotlight(dir);
     setActive(next);
+    analytics.viewProject(t.items[next].title);
   };
 
   useGSAP(
@@ -175,6 +181,34 @@ export default function Projects() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [active]);
+
+
+  // Swipe touch — mobile
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    let startX = 0;
+
+    const onTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) < 50) return; // ignora swipes muito curtos
+      navigate(diff > 0 ? 1 : -1);
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [active]);
+
 
   return (
     <>
@@ -234,7 +268,7 @@ export default function Projects() {
                     cursor: active === i ? "pointer" : "default",
                     transformOrigin: "bottom center",
                   }}
-                  onClick={() => active === i && setSelected(item)}
+                  onClick={() => { if (active === i) { setSelected(item); analytics.openProjectModal(item.title); } }}
                 >
                   <div className="h-36 w-full" style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }} />
                   <div className="p-4">
