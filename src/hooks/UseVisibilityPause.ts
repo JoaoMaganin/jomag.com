@@ -4,7 +4,7 @@ import { gsap } from "../lib/gsap";
 /**
  * Pausa todos os tweens GSAP dentro de um elemento quando ele sai da viewport
  * e retoma quando volta a ficar visível.
- */
+ */ 
 export function useVisibilityPause(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const el = ref.current;
