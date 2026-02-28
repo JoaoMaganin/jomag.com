@@ -9,6 +9,7 @@ import Contact from "./components/sections/Contact";
 export default function App() {
   return (
     <>
+      {console.log('git push url test')}
       <CustomCursor />
       <Navbar />
       <Hero />
