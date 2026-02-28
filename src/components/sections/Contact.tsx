@@ -39,7 +39,6 @@ export default function Contact() {
   const { lang } = useLang();
   const t = translations[lang].contact;
 
-  // Quebra a tagline em palavras para animar uma a uma
   const words = t.tagline.split(" ");
 
   useGSAP(
@@ -56,7 +55,6 @@ export default function Contact() {
       tl.fromTo(".contact-line", { scaleX: 0 }, { scaleX: 1, transformOrigin: "left", duration: 0.7 })
         .fromTo(".contact-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
         .fromTo(".contact-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        // Palavras da tagline uma a uma
         .fromTo(
           ".contact-word",
           { opacity: 0, y: 10 },
@@ -95,7 +93,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="section relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300"
+      className="section relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300 pt-24 md:pt-0"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       {/* Fundo único: grade diagonal de linhas finas */}
@@ -115,7 +113,7 @@ export default function Contact() {
         }}
       />
 
-      {/* Gradiente radial cobrindo o centro para não competir com o conteúdo */}
+      {/* Gradiente radial cobrindo o centro */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -169,7 +167,6 @@ export default function Contact() {
               onMouseEnter={handleLinkEnter}
               onMouseLeave={handleLinkLeave}
             >
-              {/* Ícone */}
               <div
                 className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full"
                 style={{ backgroundColor: "var(--accent-glow)", color: "var(--accent)" }}
@@ -177,12 +174,10 @@ export default function Contact() {
                 {Icons[link.type]}
               </div>
 
-              {/* Label */}
               <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
                 {link.label}
               </span>
 
-              {/* Seta */}
               {link.type === "cv" ? (
                 <svg
                   className="ml-auto transition-transform duration-200 group-hover:translate-y-0.5"

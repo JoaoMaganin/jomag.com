@@ -33,7 +33,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="section relative flex flex-col items-center justify-center transition-colors duration-300"
+      className="section relative flex flex-col items-center justify-center transition-colors duration-300 pt-24 md:pt-0"
       style={{ backgroundColor: "var(--bg-secondary)" }}
     >
 
