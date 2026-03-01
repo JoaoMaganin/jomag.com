@@ -16,6 +16,7 @@ export type ProjectItem = {
   longDescription: string;
   tags: string[];
   image: string; // URL ou cor de placeholder
+  video?: string;
   link?: string;
 };
 
@@ -120,6 +121,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Desenvolvido como tech challenge este projeto é um Web Scraping focado na simplicidade e eficiência para extrair listagens de produtos da Amazon. A ferramenta automatiza a coleta de dados que seriam buscados manualmente, refletindo competências em lógica de programação e análise de estruturas de páginas web para conversão em formatos organizados.",
           tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
           image: "/amazon.png",
+          video: "/videos/amazon-project.mp4",
           link: "https://github.com/JoaoMaganin/trainee-amazon-list/tree/master",
         },
         {
@@ -230,6 +232,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           longDescription: "Developed as a tech challenge, this project is a web scraping tool focused on simplicity and efficiency for extracting product listings from Amazon. The tool automates the collection of data that would otherwise be done manually, demonstrating expertise in programming logic and analysis of web page structures for conversion into organized formats.",
           tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
           image: "/amazon.png",
+          video: "/videos/amazon-project.mp4",
           link: "https://github.com/JoaoMaganin/trainee-amazon-list",
         },
         {

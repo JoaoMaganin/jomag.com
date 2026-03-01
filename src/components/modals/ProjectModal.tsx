@@ -42,11 +42,23 @@ export default function ProjectModal({ item, onClose }: Props) {
         className="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-2xl border"
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}
       >
-        {/* Imagem de capa */}
-        <div
-          className="h-52 w-full rounded-t-2xl"
-          style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }}
-        />
+        {/* Vídeo ou imagem de capa */}
+        {item.video ? (
+          <video
+            className="h-52 w-full rounded-t-2xl object-cover"
+            src={item.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <div
+            className="h-52 w-full rounded-t-2xl"
+            style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }}
+          />
+        )}
+
 
         <div className="p-8">
           {/* Fechar */}
