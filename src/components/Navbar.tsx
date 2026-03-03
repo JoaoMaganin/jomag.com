@@ -15,6 +15,57 @@ const NAV_HREFS: Record<NavKey, string> = {
   contact: "#contact",
 };
 
+function LogoFlip() {
+  const frontRef = useRef<HTMLSpanElement>(null);
+  const backRef = useRef<HTMLSpanElement>(null);
+  const isFlipped = useRef(false);
+
+  useEffect(() => {
+    // Só roda no desktop
+    if (window.innerWidth < 768) return;
+
+    const flip = () => {
+      isFlipped.current = !isFlipped.current;
+      const outEl = isFlipped.current ? frontRef.current : backRef.current;
+      const inEl = isFlipped.current ? backRef.current : frontRef.current;
+
+      gsap.to(outEl, { rotateX: 90, opacity: 0, duration: 0.3, ease: "power2.in" });
+      gsap.fromTo(inEl,
+        { rotateX: -90, opacity: 0 },
+        { rotateX: 0, opacity: 1, duration: 0.35, ease: "power3.out", delay: 0.25 }
+      );
+    };
+
+    const interval = setInterval(flip, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <a
+      href="#hero"
+      className="relative hidden md:block text-xl font-semibold tracking-tight"
+      style={{ height: "1.5rem", perspective: "400px" }}
+    >
+      <span
+        ref={frontRef}
+        className="absolute inset-0 inline-block"
+        style={{ color: "var(--accent)", backfaceVisibility: "hidden" }}
+      >
+        JOÃO
+      </span>
+      <span
+        ref={backRef}
+        className="absolute inset-0 inline-block"
+        style={{ color: "var(--accent)", backfaceVisibility: "hidden", opacity: 0, transform: "rotateX(-90deg)" }}
+      >
+        MAGANIN
+      </span>
+    </a>
+  );
+}
+
+
+
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const { lang, setLang } = useLang();
@@ -53,12 +104,21 @@ export default function Navbar() {
         backgroundColor: scrolled ? "var(--bg-nav)" : "transparent",
       }}
     >
-      <a
+      {/* <a
         href="#hero"
         className="text-xl font-semibold tracking-tight transition-colors"
         style={{ color: "var(--accent)" }}
       >
-          MAGANIN
+        MAGANIN
+      </a> */}
+      <LogoFlip />
+
+      <a
+        href="#hero"
+        className="md:hidden text-xl font-semibold tracking-tight"
+        style={{ color: "var(--text-primary)" }}
+      >
+        <span style={{ color: "var(--accent)" }}>Maganin</span>
       </a>
 
       <ul className="hidden list-none items-center gap-6 md:flex">
