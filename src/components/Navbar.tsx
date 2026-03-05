@@ -104,13 +104,6 @@ export default function Navbar() {
         backgroundColor: scrolled ? "var(--bg-nav)" : "transparent",
       }}
     >
-      {/* <a
-        href="#hero"
-        className="text-xl font-semibold tracking-tight transition-colors"
-        style={{ color: "var(--accent)" }}
-      >
-        MAGANIN
-      </a> */}
       <LogoFlip />
 
       <a
@@ -121,7 +114,7 @@ export default function Navbar() {
         <span style={{ color: "var(--accent)" }}>Maganin</span>
       </a>
 
-      <ul className="hidden list-none items-center gap-6 md:flex">
+      <ul className="hidden list-none items-center gap-6 md:flex absolute left-1/2 -translate-x-1/2">
         {NAV_KEYS.map((key) => (
           <li key={key}>
             <a
