@@ -22,13 +22,10 @@ export default function FeaturedBanner() {
   );
 
   const handleClick = () => {
-    // Navega até a seção de projetos
     const section = document.getElementById("projects");
     if (!section) return;
     section.scrollIntoView({ behavior: "smooth" });
 
-    // Após scroll, ativa o projeto em destaque no carrossel
-    // Dispara evento customizado que o Projects.tsx vai ouvir
     setTimeout(() => {
       window.dispatchEvent(
         new CustomEvent("featured-project", { detail: { index: FEATURED_PROJECT.index } })
@@ -39,34 +36,42 @@ export default function FeaturedBanner() {
   return (
     <div
       ref={bannerRef}
-      className="fixed left-0 right-0 z-40 flex items-center justify-center gap-3 px-4 py-2 cursor-pointer"
+      className="fixed left-0 right-0 z-40 flex items-center justify-center gap-2 px-4 py-1.5 cursor-pointer"
       style={{
-        top: 0, // altura da navbar principal
+        top: 0,
         backgroundColor: "var(--bg-card)",
         borderBottom: "1px solid var(--border)",
         opacity: 0,
+        height: "32px",
       }}
       onClick={handleClick}
     >
-      {/* Ícone de fogo — só aparece se fire: true */}
-      {SHOW_FEATURED_BANNER && (
-        <span className="text-base animate-bounce">🔥</span>
-      )}
+      <span className="text-sm">🔥</span>
 
-      <span className="text-xs uppercase tracking-widest" style={{ color: "var(--text-subtle)" }}>
+      {/* Label — esconde no mobile */}
+      <span
+        className="hidden md:inline text-xs uppercase tracking-widest"
+        style={{ color: "var(--text-subtle)" }}
+      >
         {lang === "pt" ? "Trabalhando agora em" : "Currently working on"}
       </span>
 
-      <span className="text-sm font-semibold" style={{ color: "var(--accent)" }}>
+      {/* Label curto — só no mobile */}
+      <span
+        className="md:hidden text-xs uppercase tracking-widest"
+        style={{ color: "var(--text-subtle)" }}
+      >
+        {lang === "pt" ? "Em desenvolvimento" : "Working on"}
+      </span>
+
+      <span className="text-xs md:text-sm font-semibold truncate max-w-[120px] md:max-w-none" style={{ color: "var(--accent)" }}>
         {project.title}
       </span>
 
-      {SHOW_FEATURED_BANNER && (
-        <span className="text-base animate-bounce">🔥</span>
-      )}
+      <span className="text-sm">🔥</span>
 
-      {/* Seta indicando que é clicável */}
       <svg
+        className="hidden md:block flex-shrink-0"
         width="14" height="14" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
         style={{ color: "var(--text-subtle)" }}
