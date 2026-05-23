@@ -8,6 +8,7 @@ import ProjectModal from "../modals/ProjectModal";
 import { useVisibilityPause } from "../../hooks/useVisibilityPause";
 import { analytics } from "../../lib/analytics";
 import { useSectionTracking } from "../../hooks/useSectionTracking";
+import { FEATURED_PROJECT, SHOW_FEATURED_BANNER } from "../../lib/constants";
 
 
 // Botão animado — monta com fade+slide ao trocar de projeto
@@ -83,7 +84,6 @@ export default function Projects() {
   useVisibilityPause(sectionRef);
   useSectionTracking(sectionRef, "projects");
 
-
   const { lang } = useLang();
   const t = translations[lang].projects;
   const total = t.items.length;
@@ -113,17 +113,14 @@ export default function Projects() {
     return { x: diff > 0 ? 680 : -680, y: 100, scale: 0.65, rotateZ: diff > 0 ? 45 : -45, opacity: 0, zIndex: 1 };
   };
 
-  // Anima spotlight para apagar e acender no centro
   const animateSpotlight = (dir: 1 | -1) => {
     const tl = gsap.timeline();
-    // Apaga
     tl.to(spotlightRef.current, {
       opacity: 0,
       scale: 0.6,
       duration: 0.25,
       ease: "power2.in",
     })
-      // Reacende no centro
       .to(spotlightRef.current, {
         opacity: 1,
         scale: 1,
@@ -136,9 +133,10 @@ export default function Projects() {
     cards.forEach((card, i) => {
       const p = getCardProps(i, targetActive);
       if (animate) {
+        const isMobile = window.innerWidth < 768;
         gsap.to(card, {
           x: p.x, y: p.y, scale: p.scale, rotateZ: p.rotateZ, opacity: p.opacity, zIndex: p.zIndex,
-          duration: 0.65, ease: "power3.inOut",
+          duration: isMobile ? 0.35 : 0.65, ease: "power3.inOut",
           onComplete: () => { isAnimating.current = false; },
         });
       } else {
@@ -182,6 +180,22 @@ export default function Projects() {
     return () => window.removeEventListener("keydown", onKey);
   }, [active]);
 
+  // Listener do banner — navega ao projeto em destaque
+  useEffect(() => {
+    const onFeatured = (e: Event) => {
+      const { index } = (e as CustomEvent).detail;
+      if (index === active) return;
+      const dir = index > active ? 1 : -1;
+      const cards = carouselRef.current?.querySelectorAll<HTMLElement>(".proj-card");
+      if (!cards) return;
+      isAnimating.current = true;
+      applyCardProps(cards, index, true);
+      animateSpotlight(dir);
+      setActive(index);
+    };
+    window.addEventListener("featured-project", onFeatured);
+    return () => window.removeEventListener("featured-project", onFeatured);
+  }, [active]);
 
   // Swipe touch — mobile
   useEffect(() => {
@@ -196,7 +210,7 @@ export default function Projects() {
 
     const onTouchEnd = (e: TouchEvent) => {
       const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) < 50) return; // ignora swipes muito curtos
+      if (Math.abs(diff) < 50) return;
       navigate(diff > 0 ? 1 : -1);
     };
 
@@ -209,7 +223,6 @@ export default function Projects() {
     };
   }, [active]);
 
-
   return (
     <>
       <section
@@ -218,7 +231,7 @@ export default function Projects() {
         className="section relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300"
         style={{ backgroundColor: "var(--bg-secondary)" }}
       >
-        {/* ── Spotlight: holofote de frente — glow radial centralizado ── */}
+        {/* Spotlight */}
         <div
           ref={spotlightRef}
           className="pointer-events-none absolute z-0"
@@ -258,40 +271,69 @@ export default function Projects() {
             </button>
 
             <div ref={carouselRef} className="relative h-96 w-full">
-              {t.items.map((item, i) => (
-                <div
-                  key={i}
-                  className="proj-card absolute left-1/2 top-0 h-72 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border"
-                  style={{
-                    borderColor: "var(--border)",
-                    backgroundColor: "var(--bg-card)",
-                    cursor: active === i ? "pointer" : "default",
-                    transformOrigin: "bottom center",
-                  }}
-                  onClick={() => { if (active === i) { setSelected(item); analytics.openProjectModal(item.title); } }}
-                >
-                  <div className="h-36 w-full" style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }} />
-                  <div className="p-4">
-                    <h3 className="mb-1 text-base font-semibold" style={{ color: "var(--text-primary)" }}>
-                      {item.title}
-                    </h3>
-                    <p className="text-xs leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)" }}>
-                      {item.description}
-                    </p>
-                  </div>
+              {t.items.map((item, i) => {
+                const isFeatured = i === FEATURED_PROJECT.index;
+                const withFire = isFeatured && SHOW_FEATURED_BANNER;
+                return (
+                  // Wrapper externo: fire-card ou border normal
+                  <div
+                    key={i}
+                    className={`proj-card absolute left-1/2 top-0 h-72 w-56 -translate-x-1/2 ${withFire ? "fire-card" : "rounded-2xl border"}`}
+                    style={{
+                      transformOrigin: "bottom center",
+                      cursor: active === i ? "pointer" : "default",
+                      ...(!withFire && {
+                        backgroundColor: "var(--bg-card)",
+                        borderColor: withFire ? "var(--accent)" : "var(--border)",
+                        boxShadow: isFeatured ? "0 0 24px 4px var(--accent-glow)" : "none",
+                      }),
+                    }}
+                    onClick={() => { if (active === i) { setSelected(item); analytics.openProjectModal(item.title); } }}
+                  >
+                    {/* Inner: clip do conteúdo, necessário para fire-card não cortar o fogo */}
+                    <div className={withFire ? "fire-card-inner relative h-full w-full" : "relative h-full w-full overflow-hidden rounded-2xl"}>
 
-                  {active === i && (
-                    <div
-                      className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 hover:opacity-100 rounded-2xl"
-                      style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
-                    >
-                      <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--accent)" }}>
-                        Ver detalhes
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
+                      <div className="h-36 w-full" style={{ background: item.image.startsWith("/") ? `url(${item.image}) center/cover no-repeat` : item.image }} />
+
+                      {/* Badge WIP */}
+                      {isFeatured && (
+                        <div
+                          className="absolute top-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+                          style={{ backgroundColor: "var(--accent)", color: "#000" }}
+                        >
+                          {withFire &&
+                            <span>{lang == "pt" ? "🔥 EM DESENVOLVIMENTO" : "🔥 IN PROGRESS"}</span>
+                          }
+                        </div>
+                      )}
+
+                      <div className="p-4">
+                        <h3
+                          className="mb-1 text-base font-semibold"
+                          style={{ color: isFeatured ? "var(--accent)" : "var(--text-primary)" }}
+                        >
+                          {item.title}
+                        </h3>
+                        <p className="text-xs leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)" }}>
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {active === i && (
+                        <div
+                          className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 hover:opacity-100 rounded-2xl"
+                          style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
+                        >
+                          <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--accent)" }}>
+                            Ver detalhes
+                          </span>
+                        </div>
+                      )}
+
+                    </div>{/* end inner */}
+                  </div>/* end card */
+                );
+              })}
             </div>
 
             <button

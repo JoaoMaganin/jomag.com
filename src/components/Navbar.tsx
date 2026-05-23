@@ -5,6 +5,7 @@ import { useLang } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 import { translations, NavKey } from "../lib/translations";
 import { Sun, Moon } from "lucide-react";
+import { SHOW_FEATURED_BANNER } from "../lib/constants";
 
 const NAV_KEYS: NavKey[] = ["home", "about", "experience", "projects", "contact"];
 const NAV_HREFS: Record<NavKey, string> = {
@@ -101,6 +102,7 @@ export default function Navbar() {
         scrolled ? "border-b backdrop-blur-xl" : "",
       ].join(" ")}
       style={{
+        top: SHOW_FEATURED_BANNER ? "32px" : "0px",
         borderColor: scrolled ? "var(--border)" : "transparent",
         backgroundColor: scrolled ? "var(--bg-nav)" : "transparent",
       }}

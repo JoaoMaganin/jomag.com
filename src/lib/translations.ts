@@ -131,6 +131,14 @@ export const translations: Record<"pt" | "en", Translation> = {
           tags: ["Java", "SpringBoot", "Swagger", "Docker", "Testes automatizados"],
           image: "/itau.png",
           link: "https://github.com/JoaoMaganin/itau-backend",
+        },
+        {
+          title: "Guerra Viking",
+          description: "Barbearia Vikings",
+          longDescription: `Construção de uma plataforma de ranqueamento ("Guerra Viking") projetada para estimular o engajamento e a fidelização de clientes. O projeto implementa uma interface dinâmica que processa e exibe pontuações em tempo real, demonstrando proficiência em manipulação de estado, integração assíncrona com back-end e design de UI limpo e de alta performance. O projeto foi feito com React para construir uma experiência visual imersiva, destacando habilidades em estruturação de componentes, requisições dinâmicas e design responsivo.`,
+          tags: ["React", "HTML", "CSS", "Google Apps Script"],
+          image: "/vikings.png",
+          link: "https://joaomaganin.github.io/Guerra-Viking/",
         }
       ]
     },
@@ -242,6 +250,14 @@ export const translations: Record<"pt" | "en", Translation> = {
           tags: ["Java", "SpringBoot", "Swagger", "Docker", "Testes automatizados"],
           image: "/itau.png",
           link: "https://github.com/JoaoMaganin/itau-backend",
+        },
+        {
+          title: "Guerra Viking",
+          description: "Viking Barbershop",
+          longDescription: `Construction of a ranking platform ("Guerra Viking") designed to stimulate customer engagement and loyalty. The project implements a dynamic interface that processes and displays scores in real time, demonstrating proficiency in state manipulation, asynchronous back-end integration, and clean, high-performance UI design. The project was built using React to create an immersive visual experience, highlighting skills in component structuring, dynamic requests, and responsive design.`,
+          tags: ["React", "HTML", "CSS", "Google Apps Script"],
+          image: "/vikings.png",
+          link: "https://joaomaganin.github.io/Guerra-Viking/",
         }
       ]
     },
