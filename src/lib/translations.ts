@@ -78,11 +78,23 @@ export const translations: Record<"pt" | "en", Translation> = {
           description: "Estagiário na gerência de portais e conteúdos do BNDES.",
           longDescription: "Atuação no time de supervisão e desenvolvimento novas features para gerenciadores de contúdos internos e externos do banco.",
           responsibilities: [
-            "Desenvolvimento do frontend da nova intranet em SharePoint, com integração a APIs REST (Microsoft Graph) e webparts com ReactJS e TypeScript.",
-            "Correção de vulnerabilidades e melhorias de segurança com DepTrack.",
-            "Manutenção e desenvolvimento de códigos legados com frameworks CMS utilizando Java Server Pages.",
-            "Automação da geração de planilhas com dados do Data Lake utilizando script Bash.",
-            "Desenvolvimento e atualização de views em bancos de dados distribuídos.",
+            `
+              Aumento da eficiência do sistema interno do BNDES por meio do desenvolvimento da nova
+              intranet em SharePoint, integrada ao Microsoft 365, SAP e sistemas corporativos, utilizando React
+              no frontend e Java no backend.
+            `,
+            `
+              Implementação de novas funcionalidades em gerenciadores de conteúdos baseados em JSP(Java
+              Server pages), resultando em novas features e redução de tempo de carregamento das páginas.
+            `,
+            `
+              Redução no tempo de execução de queries SQL através da simplificação de código legado em
+              sistemas internos, promovendo a otimização da visualização de dados e melhoria na performance geral.
+            `,
+            `
+              Automação da geração de planilhas com dados do Data Lake utilizando scripts Bash, resultando
+              em um aumento na produtividade da equipe ao eliminar tarefas manuais e repetitivas.
+            `
           ],
           tags: ["React", "Java", "TypeScript", "Angular", "API Rest", "Bash", "Microsoft365", "SQLServer", "Oracle", "Data Lake", "DeepTrack"],
         },
@@ -102,8 +114,8 @@ export const translations: Record<"pt" | "en", Translation> = {
         {
           title: "Maganin Automecânica",
           description: "Sistema de gestão interno",
-          longDescription: "Sistema focado na oficina automotiva Maganin Automecânica, visando entregar uma gestão integrada de estoque, finanças, vendas. Até o momento, somente a primeira versão contendo o módulo de estoque foi entregue. Criado com Spring Boot no back-end e Next.js no front-end para garantir performance e SEO.",
-          tags: ["Spring Boot", "Next.js", "SQLite", "API Rest", "Backup"],
+          longDescription: "Desenvolvimento de um sistema de gestão para a Maganin Automecânica, responsável por automatizar e integrar os processos de estoque, finanças e vendas da empresa. Atualmente, está sendo construído uma nova versão da plataforma, com melhorias na arquitetura e estrutura do projeto, visando escalabilidade, maior qualidade de código e facilidade de manutenção. O sistema é desenvolvido utilizando Spring Boot no backend e Angular no frontend.",
+          tags: ["Spring Boot", "Angular", "SQLite", "API Rest", "Backup"],
           image: "/project1.png",
           link: "https://github.com/JoaoMaganin/ERP-Maganin-Automecanica",
         },

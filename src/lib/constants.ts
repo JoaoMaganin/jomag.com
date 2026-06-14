@@ -12,6 +12,6 @@ export const FEATURED_PROJECT = {
   // Índice do projeto no array translations[lang].projects.items
   // FIX: AO ADICIONAR UM INDICE EXISTENTE E SHOW_FEATURED_FALSE, O PROJETO
   // APRESENTA UMA BORDA MAL POSICIONADA
-  index: 5, 
+  index: 1, 
 };
  

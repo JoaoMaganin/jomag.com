@@ -22,7 +22,6 @@ function LogoFlip() {
   const isFlipped = useRef(false);
 
   useEffect(() => {
-    // Só roda no desktop
     if (window.innerWidth < 768) return;
 
     const flip = () => {
@@ -65,19 +64,37 @@ function LogoFlip() {
   );
 }
 
-
-
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const { lang, setLang } = useLang();
   const { theme, toggleTheme } = useTheme();
+  
+  // Estados de controle da Navbar
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const t = translations[lang].nav;
   const isDark = theme === "dark";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let lastScrollY = window.scrollY;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Controla o background transparente/blur
+      setScrolled(currentScrollY > 20);
+
+      // Controla o esconde/mostra (apenas se passar de 72px para evitar sumir no topo)
+      if (currentScrollY > lastScrollY && currentScrollY > 72) {
+        setIsVisible(false); // Scroll para baixo
+      } else {
+        setIsVisible(true);  // Scroll para cima
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -97,8 +114,9 @@ export default function Navbar() {
     <nav
       ref={navRef}
       className={[
-        "fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between px-6 md:px-14 transition-all duration-300",
+        "fixed inset-x-0 z-50 flex h-[72px] items-center justify-between px-6 md:px-14 transition-all duration-300",
         scrolled ? "border-b backdrop-blur-xl" : "",
+        isVisible ? "translate-y-0" : "-translate-y-[150%] opacity-0", // Aqui fazemos ela subir e sumir
       ].join(" ")}
       style={{
         top: SHOW_FEATURED_BANNER ? "32px" : "0px",
