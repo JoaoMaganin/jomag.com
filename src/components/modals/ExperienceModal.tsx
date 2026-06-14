@@ -1,7 +1,10 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "../../lib/gsap";
+import { useLang } from "../../context/LanguageContext";
+import { formatPeriod, calcDuration } from "../../lib/dateUtils";
+import { analytics } from "../../lib/analytics";
+import { ExperienceItem } from "../../lib/translations";
 import { X } from "lucide-react";
-import { ExperienceItem } from "@/lib/translations";
 
 interface Props {
   item: ExperienceItem;
@@ -9,11 +12,13 @@ interface Props {
 }
 
 export default function ExperienceModal({ item, onClose }: Props) {
+  const { lang } = useLang();
   const overlayRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Abre com animação
   useEffect(() => {
+    analytics.openExperienceModal(item.role, item.company);
     const tl = gsap.timeline();
     tl.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "none" })
       .fromTo(
@@ -70,7 +75,7 @@ export default function ExperienceModal({ item, onClose }: Props) {
             className="mb-2 block text-xs font-semibold uppercase tracking-widest"
             style={{ color: "var(--accent)" }}
           >
-            {item.period}
+            {formatPeriod(item.period, lang)} · {calcDuration(item.period, lang)}
           </span>
           <h3
             className="text-2xl font-bold"

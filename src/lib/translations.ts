@@ -1,7 +1,7 @@
 export type NavKey = "home" | "about" | "experience" | "projects" | "contact";
 
 export type ExperienceItem = {
-  period: string;
+  period: { start: string; end: string };
   role: string;
   company: string;
   description: string;
@@ -50,7 +50,7 @@ export const translations: Record<"pt" | "en", Translation> = {
     },
     about: {
       title: "Sobre mim",
-      bio1: "Bacharel em Ciência da Computação com sólida base em engenharia de software. Ao longo da minha carreira, atuei desde a manutenção de sistemas legados até a arquitetura de aplicações modernas em nuvem utilizando diversas tecnologias Docker e RabbitMQ.",
+      bio1: "Bacharel em Ciência da Computação com sólida base em engenharia de software e pós graduando em Engenharia de Software em IA Aplicada . Ao longo da minha carreira, atuei desde a manutenção de sistemas legados até a arquitetura de aplicações modernas em nuvem utilizando diversas tecnologias Docker e RabbitMQ.",
       bio2: "Sou movido pelo desafio de transformar requisitos complexos em sistemas eficientes, intuitivos e prontos para escala. Como entusiasta de software livre, busco sempre o equilíbrio entre performance técnica no back-end e interfaces que comunicam valor no front-end.",
       skills: "Tecnologias",
     },
@@ -58,7 +58,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       title: "Experiência",
       items: [
         {
-          period: "2025 — Presente",
+          period: { start: "12/2025", end: "presente" },
           role: "Analista de TI Júnior",
           company: "De Paulo Pães",
           description: "Analista de TI com foco em suporte de usuário e infraestrtura.",
@@ -72,7 +72,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           tags: ["Microsoft 365", "Domínio", "Hospedagem", "Hardware"],
         },
         {
-          period: "2024 — 2025",
+          period: { start: "01/2024", end: "06/2025" },
           role: "Estagiário em análise e desenvolvimento de sistemas",
           company: "BNDES",
           description: "Estagiário na gerência de portais e conteúdos do BNDES.",
@@ -164,7 +164,7 @@ export const translations: Record<"pt" | "en", Translation> = {
         { label: "joaovitormontemor138@email.com", href: "mailto:joaovitormontemor138@email.com", type: "email" },
         { label: "Baixar currículo", href: "/cv-pt.pdf", type: "cv" },
       ],
-      footer: "Feito com React, GSAP e café ☕",
+      footer: "Feito com React e GSAP",
     },
   },
   en: {
@@ -181,7 +181,7 @@ export const translations: Record<"pt" | "en", Translation> = {
     },
     about: {
       title: "About me",
-      bio1: "Bachelor of Science in Computer Science with a strong background in software engineering. Throughout my career, I have worked in areas ranging from maintaining legacy systems to architecting modern cloud applications using various Docker and RabbitMQ technologies.",
+      bio1: "Bachelor of Science in Computer Science and with a strong background in software engineering and postgraduate student in Software Engineering with a focus on Applied AI. Throughout my career, I have worked in areas ranging from maintaining legacy systems to architecting modern cloud applications using various Docker and RabbitMQ technologies.",
       bio2: "I'm driven by the challenge of transforming complex requirements into efficient, intuitive, and scalable systems. As an open-source software enthusiast, I always seek a balance between technical performance on the back-end and interfaces that communicate value on the front-end.",
       skills: "Technologies",
     },
@@ -189,7 +189,7 @@ export const translations: Record<"pt" | "en", Translation> = {
       title: "Work Experience",
       items: [
         {
-          period: "2025 — Presente",
+          period: { start: "12/2025", end: "present" },
           role: "Junior IT Analyst",
           company: "De Paulo Pães",
           description: "IT analyst focused on user support and infrastructure.",
@@ -203,7 +203,7 @@ export const translations: Record<"pt" | "en", Translation> = {
           tags: ["Microsoft 365", "Domínio", "Hospedagem", "Hardware"],
         },
         {
-          period: "2024 — 2025",
+          period: { start: "01/2024", end: "06/2025" },
           role: "Intern in systems analysis and development",
           company: "BNDES",
           description: "Intern in the portals and content management department at BNDES.",

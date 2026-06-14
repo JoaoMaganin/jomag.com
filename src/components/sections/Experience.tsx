@@ -3,8 +3,10 @@ import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useLang } from "../../context/LanguageContext";
 import { translations, ExperienceItem } from "../../lib/translations";
-import ExperienceModal from "../modals/ExperienceModal";
 import { useVisibilityPause } from "../../hooks/useVisibilityPause";
+import { formatPeriod, calcDuration } from "../../lib/dateUtils";
+import { useSectionTracking } from "../../hooks/useSectionTracking";
+import ExperienceModal from "../modals/ExperienceModal";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,7 +15,9 @@ export default function Experience() {
   const [selected, setSelected] = useState<ExperienceItem | null>(null);
 
   useVisibilityPause(sectionRef);
-  
+
+  useSectionTracking(sectionRef, "experience");
+
   const { lang } = useLang();
   const t = translations[lang].experience;
 
@@ -143,9 +147,8 @@ export default function Experience() {
               {t.items.map((item, i) => (
                 <div
                   key={i}
-                  className={`exp-item relative flex flex-col md:gap-12 ${
-                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
+                  className={`exp-item relative flex flex-col md:gap-12 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
                 >
                   {/* Dot */}
                   <div
@@ -156,9 +159,8 @@ export default function Experience() {
                   {/* Card clicável */}
                   <button
                     onClick={() => setSelected(item)}
-                    className={`exp-content group w-full rounded-xl border p-6 text-left transition-all duration-200 md:w-[calc(50%-2rem)] ${
-                      i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
-                    }`}
+                    className={`exp-content group w-full rounded-xl border p-6 text-left transition-all duration-200 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
+                      }`}
                     style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-card)", cursor: "pointer" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = "var(--border-hover)";
@@ -173,7 +175,10 @@ export default function Experience() {
                       className="mb-2 block text-xs font-semibold uppercase tracking-widest"
                       style={{ color: "var(--accent)" }}
                     >
-                      {item.period}
+                      {item.period.start} - {item.period.end}
+                      <span style={{ color: "var(--text-subtle)", fontSize: "0.7rem" }}>
+                        · {calcDuration(item.period, lang)}
+                      </span>
                     </span>
                     <h3 className="mb-1 text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
                       {item.role}
