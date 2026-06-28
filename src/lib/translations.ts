@@ -128,13 +128,12 @@ export const translations: Record<"pt" | "en", Translation> = {
           link: "https://github.com/JoaoMaganin/employee_management_system",
         },
         {
-          title: "Amazon web scrapping",
-          description: "Scrapping de produtos na Amazon",
-          longDescription: "Desenvolvido como tech challenge este projeto é um Web Scraping focado na simplicidade e eficiência para extrair listagens de produtos da Amazon. A ferramenta automatiza a coleta de dados que seriam buscados manualmente, refletindo competências em lógica de programação e análise de estruturas de páginas web para conversão em formatos organizados.",
-          tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
-          image: "/amazon.png",
-          video: "/videos/amazon-project.mp4",
-          link: "https://github.com/JoaoMaganin/trainee-amazon-list/tree/master",
+          title: "FilmSense",
+          description: "Recomendações personalizadas com inteligencia artificial",
+          longDescription: "FilmSense é uma aplicação web de recomendação de filmes que utiliza uma rede neural treinada diretamente no browser para sugerir filmes com base no gosto pessoal do usuário. Quanto mais filmes você avalia, mais precisas ficam as recomendações. Desenvolvido como projeto de portfólio durante a pós-graduação em Engenharia de IA Aplicada.",
+          tags: ["Angular", "Machine Learning", "Supabase", "Tmdb", "HTML/CSS", "Vercel"],
+          image: "/filmsense_logo.gif",
+          link: "https://film-sense.vercel.app/"
         },
         {
           title: "Itaú Tech Challenge",
@@ -247,13 +246,12 @@ export const translations: Record<"pt" | "en", Translation> = {
           link: "https://github.com/JoaoMaganin/employee_management_system",
         },
         {
-          title: "Amazon web scrapping",
-          description: "Scrapping products on Amazon",
-          longDescription: "Developed as a tech challenge, this project is a web scraping tool focused on simplicity and efficiency for extracting product listings from Amazon. The tool automates the collection of data that would otherwise be done manually, demonstrating expertise in programming logic and analysis of web page structures for conversion into organized formats.",
-          tags: ["TypeScript", "Express", "Bun", "Axios", "HTML/CSS"],
-          image: "/amazon.png",
-          video: "/videos/amazon-project.mp4",
-          link: "https://github.com/JoaoMaganin/trainee-amazon-list",
+          title: "FilmSense",
+          description: "Personalized recommendations powered by artificial intelligence",
+          longDescription: "FilmSense is a web-based movie recommendation application that uses a neural network trained directly in the browser to suggest movies based on the user's personal preferences. The more movies you rate, the more accurate the recommendations become. Developed as a portfolio project during graduate studies in Applied AI Engineering.",
+          tags: ["Angular", "Machine Learning", "Supabase", "Tmdb", "HTML/CSS", "Vercel"],
+          image: "/filmsense_logo.gif",
+          link: "https://film-sense.vercel.app/"
         },
         {
           title: "Itaú Tech Challenge",

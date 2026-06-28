@@ -53,7 +53,7 @@ export default function FeaturedBanner() {
         className="hidden md:inline text-xs uppercase tracking-widest"
         style={{ color: "var(--text-subtle)" }}
       >
-        {lang === "pt" ? "Trabalhando agora em" : "Currently working on"}
+        {lang === "pt" ? "Projeto mais recente" : "Most recent project"}
       </span>
 
       {/* Label curto — só no mobile */}

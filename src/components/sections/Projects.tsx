@@ -302,7 +302,7 @@ export default function Projects() {
                           style={{ backgroundColor: "var(--accent)", color: "#000" }}
                         >
                           {withFire &&
-                            <span>{lang == "pt" ? "🔥 EM DESENVOLVIMENTO" : "🔥 IN PROGRESS"}</span>
+                            <span>{lang == "pt" ? "🔥 NOVO" : "🔥 NEW"}</span>
                           }
                         </div>
                       )}
