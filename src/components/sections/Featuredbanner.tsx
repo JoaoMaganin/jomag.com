@@ -61,7 +61,7 @@ export default function FeaturedBanner() {
         className="md:hidden text-xs uppercase tracking-widest"
         style={{ color: "var(--text-subtle)" }}
       >
-        {lang === "pt" ? "Em desenvolvimento" : "Working on"}
+        {lang === "pt" ? "Projeto mais recente" : "Most recent project"}
       </span>
 
       <span className="text-xs md:text-sm font-semibold truncate max-w-[120px] md:max-w-none" style={{ color: "var(--accent)" }}>
