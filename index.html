@@ -14,6 +14,7 @@
       height: 100%;
       overflow-y: scroll;
       scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
     }
 
     body {
@@ -30,7 +31,7 @@
     }
 
     /* Scroll-snap apenas em desktop (768px+) */
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
       html {
         scroll-snap-type: y mandatory;
       }
@@ -51,7 +52,7 @@
         scroll-snap-align: start;
         scroll-snap-stop: normal;
       }
-    }
+    } */
   </style>
 
   <!-- Google tag (gtag.js) -->
