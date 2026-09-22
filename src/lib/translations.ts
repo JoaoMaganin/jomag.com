@@ -58,7 +58,17 @@ export const translations: Record<"pt" | "en", Translation> = {
       title: "Experiência",
       items: [
         {
-          period: { start: "12/2025", end: "presente" },
+          period: { start: "08/2026", end: "Presente" },
+          role: "Analista de AMS",
+          company: "Reply Logistics BR",
+          description: "Analista de AMS",
+          longDescription: "",
+          responsibilities: [
+          ],
+          tags: ["Java", "Suporte", "PL/SQL"],
+        },
+        {
+          period: { start: "12/2025", end: "08/2026" },
           role: "Analista de TI Júnior",
           company: "De Paulo Pães",
           description: "Analista de TI com foco em suporte de usuário e infraestrtura.",
@@ -187,6 +197,16 @@ export const translations: Record<"pt" | "en", Translation> = {
     experience: {
       title: "Work Experience",
       items: [
+        {
+          period: { start: "08/2026", end: "Present" },
+          role: "AMS Analist",
+          company: "Reply Logistics BR",
+          description: "AMS Analist",
+          longDescription: "",
+          responsibilities: [
+          ],
+          tags: ["Java", "Suport", "PL/SQL"],
+        },
         {
           period: { start: "12/2025", end: "present" },
           role: "Junior IT Analyst",
